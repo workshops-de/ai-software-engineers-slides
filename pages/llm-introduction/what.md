@@ -50,6 +50,7 @@ layout: default
 
 ---
 layout: two-cols
+layoutClass: gap-16
 ---
 
 # 🎯 Tokenization in Practice
@@ -70,48 +71,40 @@ layout: two-cols
 
 ::right::
 
-<div class="flex flex-col justify-center h-full">
 
-**Why this matters:**
+**Why this matters**
 - Token limits = not character limits
 - Special chars can explode token count
 - Different languages tokenize differently
 - Affects prompt engineering strategies
 
-<div class="bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-lg mt-4">
-⚠️ **Pro tip:** Minified code uses more tokens than formatted code!
-</div>
-
-</div>
 
 ---
-layout: default
+layout: two-cols
 ---
 
 # 🧭 Step 2: Embeddings
 
 <div class="text-lg font-semibold mb-4">Each token becomes a <span class="text-blue-500">vector</span> in high-dimensional space</div>
 
-<div class="grid grid-cols-2 gap-6">
-
-<div>
-**Semantic Similarity:**
+## Semantic Similarity
 - "Developer" ≈ "Programmer"
 - "Vue" ≈ "React" (both are frameworks)
 - "function" ≈ "method"
 
-**Contextual Distance:**
+## Contextual Distance
 - "Cat" ≠ "for-loop"
 - "Database" ≠ "Banana"
-</div>
 
-<div class="bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-lg">
+::right::
+
+<div class="bg-gradient-to-br from-blue-100 to-purple-100 dark:from-blue-900/20 dark:to-purple-900/20 p-2 mt-14 rounded-lg">
 <h3 class="font-bold mb-3">🟣 Think of it as:</h3>
 <p class="text-base"><strong>Geometry of meaning</strong>, not logic</p>
 <p class="text-sm mt-2 opacity-75">Words with similar meanings are close in vector space</p>
 </div>
 
-</div>
+
 
 ---
 layout: center
