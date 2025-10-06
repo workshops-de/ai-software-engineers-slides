@@ -57,6 +57,23 @@ src: ./pages/prompt-engineering/how.md
 src: ./pages/prompt-engineering/what-if.md
 ---
 
+---
+src: ./pages/rule-instruction-files/why.md
+---
+
+---
+src: ./pages/rule-instruction-files/what.md
+---
+
+---
+src: ./pages/rule-instruction-files/how.md
+---
+
+---
+src: ./pages/rule-instruction-files/what-if.md
+---
+
+
 # Welcome to Slidev
 
 Presentation slides for developers
