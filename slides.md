@@ -41,6 +41,22 @@ src: ./pages/llm-introduction/what-if.md
 src: ./pages/llm-introduction/task.md
 ---
 
+---
+src: ./pages/prompt-engineering/why.md
+---
+
+---
+src: ./pages/prompt-engineering/what.md
+---
+
+---
+src: ./pages/prompt-engineering/how.md
+---
+
+---
+src: ./pages/prompt-engineering/what-if.md
+---
+
 # Welcome to Slidev
 
 Presentation slides for developers
