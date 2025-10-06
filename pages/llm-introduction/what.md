@@ -260,7 +260,7 @@ layout: center
 <div class="flex justify-center">
 <svg width="550" height="280" viewBox="0 0 550 280">
   <!-- Main transformer architecture outline -->
-  <rect x="100" y="40" width="350" height="200" rx="10" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" stroke-width="2"/>
+  <rect x="100" y="40" width="350" height="220" rx="10" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1" stroke-width="2"/>
   <text x="275" y="30" font-size="6" text-anchor="middle" font-weight="bold" fill="#6366f1">Transformer</text>
 
   <!-- Input and output areas -->
@@ -275,7 +275,7 @@ layout: center
   <text x="275" y="185" font-size="5" text-anchor="middle" fill="#10b981">Feed-Forward Networks</text>
 
   <rect x="150" y="210" width="250" height="40" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
-  <text x="275" y="225" font-size="5" text-anchor="middle">Output Probabilities</text>
+  <text x="275" y="235" font-size="5" text-anchor="middle">Output Probabilities</text>
 
   <!-- Flow arrows -->
   <line x1="275" y1="90" x2="275" y2="110" stroke="#888" stroke-width="1" marker-end="url(#arrow)"/>
@@ -296,55 +296,20 @@ layout: center
 </div>
 
 ---
-layout: two-cols
+layout: default
 ---
 
 # 🔍 How Self-Attention Works
 
-<div class="text-base mb-4">
-Self-attention helps tokens "look at" other tokens in the sequence
-</div>
-
-**How it works:**
+## How it works
 - Each token asks: "How relevant are other tokens to me?"
 - Creates connections of varying strengths
 - Captures relationships regardless of distance
 
+> Self-attention helps tokens "look at" other tokens in the sequence
+
 <div class="mt-4 mb-4 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
 💡 <strong>Key advantage:</strong> Unlike older models, transformers can see the entire context at once
-</div>
-
-::right::
-
-<div class="flex items-center justify-center h-full">
-<svg width="300" height="240" viewBox="0 0 300 240">
-  <!-- Example sentence tokens -->
-  <rect x="40" y="40" width="60" height="25" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="70" y="57" font-size="4" text-anchor="middle">developer</text>
-
-  <rect x="120" y="40" width="60" height="25" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="150" y="57" font-size="4" text-anchor="middle">writes</text>
-
-  <rect x="200" y="40" width="60" height="25" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="230" y="57" font-size="4" text-anchor="middle">code</text>
-
-  <!-- Attention connections with varying strengths -->
-  <line x1="70" y1="65" x2="150" y2="65" stroke="#6366f1" stroke-width="3" stroke-opacity="0.8"/>
-  <line x1="150" y1="65" x2="230" y2="65" stroke="#6366f1" stroke-width="1" stroke-opacity="0.4"/>
-  <line x1="70" y1="65" x2="230" y2="65" stroke="#6366f1" stroke-width="0.5" stroke-opacity="0.2" stroke-dasharray="2,2"/>
-
-  <!-- Attention visualization -->
-  <rect x="60" y="90" width="180" height="60" rx="5" fill="rgba(37, 99, 235, 0.1)" stroke="#2563eb"/>
-  <text x="150" y="110" font-size="5" text-anchor="middle" fill="#2563eb">Attention Scores</text>
-
-  <rect x="70" y="120" width="160" height="20" fill="rgba(37, 99, 235, 0.05)" stroke="none"/>
-  <rect x="70" y="120" width="110" height="20" fill="rgba(37, 99, 235, 0.2)" stroke="none"/>
-  <text x="150" y="134" font-size="4" text-anchor="middle">Strong connection: developer → writes</text>
-
-  <!-- Output representation -->
-  <rect x="60" y="170" width="180" height="30" rx="5" fill="rgba(16, 185, 129, 0.1)" stroke="#10b981"/>
-  <text x="150" y="190" font-size="4" text-anchor="middle" fill="#10b981">Context-aware representation</text>
-</svg>
 </div>
 
 ---
@@ -358,32 +323,35 @@ layout: default
 <div class="flex justify-center mb-6 mt-2">
 <svg width="550" height="200" viewBox="0 0 550 200">
   <!-- Tokens -->
-  <rect x="50" y="40" width="70" height="30" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="85" y="60" font-size="5" text-anchor="middle">developer</text>
+  <rect x="45" y="40" width="80" height="30" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
+  <text x="85" y="60" font-size="4" text-anchor="middle">developer</text>
 
   <rect x="170" y="40" width="70" height="30" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="205" y="60" font-size="5" text-anchor="middle">loves</text>
+  <text x="205" y="60" font-size="4" text-anchor="middle">loves</text>
 
   <rect x="290" y="40" width="70" height="30" rx="5" fill="rgba(59, 130, 246, 0.2)" stroke="#3b82f6" stroke-width="2"/>
-  <text x="325" y="60" font-size="5" text-anchor="middle" font-weight="bold" fill="#3b82f6">Vue</text>
+  <text x="325" y="60" font-size="4" text-anchor="middle" font-weight="bold" fill="#3b82f6">Vue</text>
 
   <rect x="410" y="40" width="70" height="30" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="445" y="60" font-size="5" text-anchor="middle">writes</text>
+  <text x="445" y="60" font-size="4" text-anchor="middle">writes</text>
 
   <!-- Attention connections from "Vue" to other tokens -->
   <line x1="325" y1="70" x2="85" y2="70" stroke="#3b82f6" stroke-width="1.5" stroke-opacity="0.5" marker-end="url(#bluearrow)"/>
-  <line x1="325" y1="70" x2="205" y2="70" stroke="#3b82f6" stroke-width="3" stroke-opacity="0.8" marker-end="url(#bluearrow)"/>
+  <line x1="325" y1="70" x2="205" y2="70" stroke="#3b82f6" stroke-width="2" stroke-opacity="0.8" marker-end="url(#bluearrow)"/>
   <line x1="325" y1="70" x2="445" y2="70" stroke="#3b82f6" stroke-width="0.8" stroke-opacity="0.3" marker-end="url(#bluearrow)"/>
 
   <!-- Attention percentages -->
-  <text x="150" y="85" font-size="4" fill="#3b82f6">30% attention</text>
-  <text x="265" y="85" font-size="4" fill="#3b82f6">60% attention</text>
-  <text x="380" y="85" font-size="4" fill="#3b82f6">10% attention</text>
+  <text x="150" y="85" font-size="3" fill="#3b82f6">30% attention</text>
+  <text x="265" y="85" font-size="3" fill="#3b82f6">60% attention</text>
+  <text x="380" y="85" font-size="3" fill="#3b82f6">10% attention</text>
 
   <!-- Interpretation -->
-  <rect x="50" y="120" width="430" height="40" rx="8" fill="rgba(59, 130, 246, 0.05)" stroke="#3b82f6" stroke-dasharray="2,2"/>
-  <text x="265" y="145" font-size="5" text-anchor="middle" fill="#3b82f6">
-    Vue pays most attention to "loves" (relationship) and some to "developer" (subject)
+  <rect x="50" y="120" width="430" height="60" rx="8" fill="rgba(59, 130, 246, 0.05)" stroke="#3b82f6" stroke-dasharray="2,2"/>
+  <text x="265" y="145" font-size="4" text-anchor="middle" fill="#3b82f6">
+    Vue pays most attention to "loves" (relationship) a
+  </text>
+  <text x="265" y="165" font-size="4" text-anchor="middle" fill="#3b82f6">
+    and some to "developer" (subject)
   </text>
 
   <!-- Arrow marker definition -->
@@ -463,47 +431,47 @@ layout: center
 <div class="flex justify-center">
 <svg width="550" height="280" viewBox="0 0 550 280">
   <!-- Input tokens -->
-  <rect x="175" y="20" width="200" height="30" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
-  <text x="275" y="40" font-size="5" text-anchor="middle">Input: "The developer loves Vue"</text>
+  <rect x="120" y="20" width="300" height="30" rx="5" fill="#f3f4f6" stroke="#d1d5db"/>
+  <text x="275" y="40" font-size="4" text-anchor="middle">Input: "The developer loves Vue"</text>
 
   <!-- Multiple attention heads -->
   <rect x="50" y="90" width="130" height="90" rx="8" fill="rgba(139, 92, 246, 0.1)" stroke="#8b5cf6"/>
-  <text x="115" y="80" font-size="4" text-anchor="middle" fill="#8b5cf6">Head 1: Syntax Focus</text>
+  <text x="115" y="80" font-size="3" text-anchor="middle" fill="#8b5cf6">Head 1: Syntax Focus</text>
   <line x1="115" y1="50" x2="115" y2="90" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="2,2"/>
 
   <rect x="210" y="90" width="130" height="90" rx="8" fill="rgba(14, 165, 233, 0.1)" stroke="#0ea5e9"/>
-  <text x="275" y="80" font-size="4" text-anchor="middle" fill="#0ea5e9">Head 2: Subject Focus</text>
+  <text x="275" y="80" font-size="3" text-anchor="middle" fill="#0ea5e9">Head 2: Subject Focus</text>
   <line x1="275" y1="50" x2="275" y2="90" stroke="#0ea5e9" stroke-width="1" stroke-dasharray="2,2"/>
 
   <rect x="370" y="90" width="130" height="90" rx="8" fill="rgba(34, 197, 94, 0.1)" stroke="#22c55e"/>
-  <text x="435" y="80" font-size="4" text-anchor="middle" fill="#22c55e">Head 3: Object Focus</text>
+  <text x="435" y="80" font-size="3" text-anchor="middle" fill="#22c55e">Head 3: Object Focus</text>
   <line x1="435" y1="50" x2="435" y2="90" stroke="#22c55e" stroke-width="1" stroke-dasharray="2,2"/>
 
   <!-- Head contents with different attention patterns -->
   <!-- Head 1 connections -->
   <circle cx="80" cy="130" r="10" fill="#f3f4f6" stroke="#8b5cf6"/>
-  <text x="80" y="132" font-size="3" text-anchor="middle">developer</text>
+  <text x="80" y="155" font-size="3" text-anchor="middle">developer</text>
   <circle cx="150" cy="130" r="10" fill="#f3f4f6" stroke="#8b5cf6"/>
-  <text x="150" y="132" font-size="3" text-anchor="middle">loves</text>
+  <text x="150" y="155" font-size="3" text-anchor="middle">loves</text>
   <line x1="80" y1="130" x2="150" y2="130" stroke="#8b5cf6" stroke-width="2" stroke-opacity="0.8"/>
 
   <!-- Head 2 connections -->
   <circle cx="240" cy="130" r="10" fill="#f3f4f6" stroke="#0ea5e9"/>
-  <text x="240" y="132" font-size="3" text-anchor="middle">developer</text>
+  <text x="240" y="155" font-size="3" text-anchor="middle">developer</text>
   <circle cx="310" cy="130" r="10" fill="#f3f4f6" stroke="#0ea5e9"/>
-  <text x="310" y="132" font-size="3" text-anchor="middle">Vue</text>
+  <text x="310" y="155" font-size="3" text-anchor="middle">Vue</text>
   <line x1="240" y1="130" x2="310" y2="130" stroke="#0ea5e9" stroke-width="2" stroke-opacity="0.8"/>
 
   <!-- Head 3 connections -->
   <circle cx="400" cy="130" r="10" fill="#f3f4f6" stroke="#22c55e"/>
-  <text x="400" y="132" font-size="3" text-anchor="middle">loves</text>
+  <text x="400" y="155" font-size="3" text-anchor="middle">loves</text>
   <circle cx="470" cy="130" r="10" fill="#f3f4f6" stroke="#22c55e"/>
-  <text x="470" y="132" font-size="3" text-anchor="middle">Vue</text>
+  <text x="470" y="155" font-size="3" text-anchor="middle">Vue</text>
   <line x1="400" y1="130" x2="470" y2="130" stroke="#22c55e" stroke-width="2" stroke-opacity="0.8"/>
 
   <!-- Combined output -->
-  <rect x="175" y="220" width="200" height="40" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
-  <text x="275" y="245" font-size="5" text-anchor="middle" fill="#6366f1">Combined Attention Output</text>
+  <rect x="165" y="220" width="220" height="40" rx="5" fill="rgba(99, 102, 241, 0.1)" stroke="#6366f1"/>
+  <text x="275" y="245" font-size="4" text-anchor="middle" fill="#6366f1">Combined Attention Output</text>
 
   <!-- Combination arrows -->
   <line x1="115" y1="180" x2="275" y2="220" stroke="#8b5cf6" stroke-width="1" stroke-opacity="0.6" marker-end="url(#purplearrow)"/>
@@ -599,9 +567,6 @@ layout: default
 </div>
 </div>
 
-<div class="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 rounded-lg text-center">
-💡 <strong>Key insight:</strong> These components combine to form transformer blocks that are stacked together
-</div>
 
 ---
 layout: default
