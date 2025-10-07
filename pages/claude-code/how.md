@@ -150,51 +150,34 @@ layout: default
 ```yaml
 name: Comprehensive Claude Workflow
 on:
-  issues:
-    types: [opened, labeled]
-  pull_request:
-    types: [opened, synchronize, closed]
-  schedule:
-    - cron: '0 9 * * 1'  # Monday mornings
+  issues: [opened, labeled]
+  pull_request: [opened, synchronize]
+  schedule: ['0 9 * * 1']  # Monday mornings
 
 jobs:
   issue-handler:
     if: github.event_name == 'issues'
-    runs-on: ubuntu-latest
     steps:
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: |
-            Analyze this issue and:
-            1. Classify type (bug/feature/question)
-            2. Estimate complexity (1-5)
-            3. Add appropriate labels
-            4. Create implementation plan if needed
+          prompt: "Classify issue type and create implementation plan"
 
   pr-reviewer:
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'  
     steps:
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: "/review --security --performance --style"
+          prompt: "/review --security --performance"
           
   weekly-maintenance:
     if: github.event_name == 'schedule'
-    runs-on: ubuntu-latest
     steps:
       - uses: anthropics/claude-code-action@v1
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: |
-            Weekly codebase health check:
-            - Review open issues and PRs
-            - Check dependency vulnerabilities
-            - Analyze code quality trends
-            - Generate maintenance report
+          prompt: "Weekly health check and maintenance report"
 ```
+
+**Benefits**: Event-driven, automated responses, proactive maintenance
 
 ---
 layout: two-cols-header
@@ -239,23 +222,16 @@ TypeScript React application with Node.js backend
 
 ## Workflow-Specific Prompts
 ```yaml
-# Specialized workflows
+# Security-focused workflow
 - uses: anthropics/claude-code-action@v1
   with:
     anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
     prompt: |
-      SECURITY AUDIT MODE:
-      
-      Perform comprehensive security review:
-      - Scan for OWASP Top 10 vulnerabilities
-      - Check authentication/authorization flows
-      - Validate input sanitization
-      - Review dependency security
-      - Generate security report
-      
-      Create security fixes as separate PR if issues found.
+      SECURITY AUDIT: Check for vulnerabilities and create fixes
     claude_args: "--max-turns 10"
 ```
+
+**Prompt types**: Security audits, performance reviews, documentation generation
 
 ---
 layout: default
@@ -293,52 +269,25 @@ layout: default
 
 # Error Handling & Fallbacks 🛡️
 
-## Robust Workflow Setup
 ```yaml
-jobs:
-  claude-with-fallback:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Primary Claude Analysis
-        id: claude
-        continue-on-error: true
-        uses: anthropics/claude-code-action@v1
-        with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: "--max-turns 5 --timeout 300"
-          
-      - name: Fallback Notification
-        if: steps.claude.outcome == 'failure'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            const comment = `⚠️ Claude analysis encountered an issue.
-            
-            **Possible causes:**
-            - API rate limits reached
-            - Complex codebase analysis timeout  
-            - Network connectivity issues
-            
-            **Next steps:**
-            - Try again in a few minutes
-            - Use more specific prompts
-            - Contact support if issues persist
-            
-            Manual review has been requested.`;
-            
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,  
-              issue_number: context.issue.number,
-              body: comment
-            });
-            
-      - name: Success Metrics
-        if: steps.claude.outcome == 'success'
-        run: |
-          echo "✅ Claude analysis completed successfully"
-          echo "Response time: ${{ steps.claude.outputs.duration || 'N/A' }}"
+steps:
+  - name: Claude Analysis
+    id: claude
+    continue-on-error: true
+    uses: anthropics/claude-code-action@v1
+    with:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      
+  - name: Fallback
+    if: failure()
+    run: echo "⚠️ Claude failed. Manual review requested."
 ```
+
+## Best Practices
+- Use `continue-on-error: true` for non-critical workflows
+- Set appropriate timeouts with `claude_args: "--timeout 300"`
+- Provide clear fallback notifications
+- Monitor success rates and optimize accordingly
 
 ---
 layout: default
