@@ -73,6 +73,21 @@ src: ./pages/rule-instruction-files/how.md
 src: ./pages/rule-instruction-files/what-if.md
 ---
 
+---
+src: ./pages/model-context-protocol/why.md
+---
+
+---
+src: ./pages/model-context-protocol/what.md
+---
+
+---
+src: ./pages/model-context-protocol/how.md
+---
+
+---
+src: ./pages/model-context-protocol/what-if.md
+---
 
 # Welcome to Slidev
 
