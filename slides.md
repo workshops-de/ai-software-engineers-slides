@@ -90,6 +90,14 @@ src: ./pages/model-context-protocol/what-if.md
 ---
 
 ---
+src: ./pages/agentic-coding/title.md
+---
+
+---
+src: ./pages/agentic-coding/little-what.md
+---
+
+---
 src: ./pages/agentic-coding/why.md
 ---
 
@@ -110,6 +118,14 @@ src: ./pages/agentic-coding/task.md
 ---
 
 ---
+src: ./pages/claude-code/title.md
+---
+
+---
+src: ./pages/claude-code/little-what.md
+---
+
+---
 src: ./pages/claude-code/why.md
 ---
 
@@ -127,6 +143,14 @@ src: ./pages/claude-code/what-if.md
 
 ---
 src: ./pages/claude-code/task.md
+---
+
+---
+src: ./pages/github-workflows/title.md
+---
+
+---
+src: ./pages/github-workflows/little-what.md
 ---
 
 ---
