@@ -169,6 +169,7 @@ on:
   issues:
     types: [opened, labeled]
 ```
+
 **Triggers**: @claude mentions, labels
 
 **Use for**: Bug reports, feature requests, questions  
@@ -183,6 +184,7 @@ on:
   pull_request:
     types: [opened, synchronize]
 ```
+
 **Triggers**: New PRs, code changes
 
 **Use for**: Code reviews, quality checks, security scans  
@@ -198,6 +200,7 @@ on:
     inputs:
       task: [refactor, document, optimize]
 ```
+
 **Triggers**: On-demand execution
 
 **Use for**: Maintenance, optimization, documentation updates  
