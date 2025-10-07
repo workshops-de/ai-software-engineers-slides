@@ -156,3 +156,16 @@ Common patterns across all platforms:
 - Simple, readable plain text format
 
 </div>
+
+---
+layout: default
+---
+
+# Best practices
+## Good rules are focused, actionable, and scoped.
+
+- Keep rules under **500** lines
+- Split large rules into multiple, composable rules
+- Provide concrete examples or referenced files
+- Avoid vague guidance. Write rules like clear internal docs
+- Reuse rules when repeating prompts in chat

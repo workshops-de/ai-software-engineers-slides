@@ -28,6 +28,36 @@ layout: cover
 layout: default
 ---
 
+# Agents Use MCP Tools Out of the Box
+
+- Most AI agents support **MCP tool calls** natively
+- Common built-in tools:
+  - **File access** (read/write project files)
+  - **Bash** (run shell commands)
+  - **PowerShell** (Windows automation)
+  - **Browser** (web navigation and scraping)
+- Enables agents to interact with your environment immediately
+
+## Example prompt
+
+```text
+Browse http://site.org and summarise its contents
+```
+
+---
+
+# Easily Add MCP Servers to Any Agent
+
+- **MCP servers** can be integrated with any agent platform
+- Extend agent capabilities with custom tools and data sources
+- Simple setup—see [mcp.so](https://mcp.so) for guides and ready-to-use servers
+- Scale from local development to cloud-based workflows
+
+
+---
+layout: default
+---
+
 # MCP Architecture
 
 ## Three Core Components
