@@ -88,3 +88,63 @@ src: ./pages/model-context-protocol/how.md
 ---
 src: ./pages/model-context-protocol/what-if.md
 ---
+
+---
+src: ./pages/agentic-coding/why.md
+---
+
+---
+src: ./pages/agentic-coding/what.md
+---
+
+---
+src: ./pages/agentic-coding/how.md
+---
+
+---
+src: ./pages/agentic-coding/what-if.md
+---
+
+---
+src: ./pages/agentic-coding/task.md
+---
+
+---
+src: ./pages/claude-code/why.md
+---
+
+---
+src: ./pages/claude-code/what.md
+---
+
+---
+src: ./pages/claude-code/how.md
+---
+
+---
+src: ./pages/claude-code/what-if.md
+---
+
+---
+src: ./pages/claude-code/task.md
+---
+
+---
+src: ./pages/github-workflows/why.md
+---
+
+---
+src: ./pages/github-workflows/what.md
+---
+
+---
+src: ./pages/github-workflows/how.md
+---
+
+---
+src: ./pages/github-workflows/what-if.md
+---
+
+---
+src: ./pages/github-workflows/task.md
+---
