@@ -1,3 +1,8 @@
+
+---
+src: ./github-workflows-for-agentic-coding/_index.md
+---
+
 ---
 src: ./title.md
 ---
@@ -22,6 +27,7 @@ src: ./how.md
 src: ./what-if.md
 ---
 
+
 ---
-src: ./task.md
+src: ./tasks/_index.md
 ---

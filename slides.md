@@ -40,11 +40,3 @@ src: ./pages/model-context-protocol/_index.md
 ---
 src: ./pages/agentic-coding/_index.md
 ---
-
----
-src: ./pages/claude-code/_index.md
----
-
----
-src: ./pages/github-workflows/_index.md
----

@@ -230,16 +230,3 @@ steps:
 ```
 
 **Key principles**: Graceful failures, fallback notifications, continue-on-error
-
----
-layout: center 
-class: text-center
----
-
-# 🚀 Ready for Claude Code Specifics?
-
-## Now let's dive deep into Claude Code features
-
-<div class="text-sm mt-8 opacity-75">
-From basic patterns to advanced workflows
-</div>
