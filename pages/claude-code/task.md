@@ -5,7 +5,7 @@ class: text-center
 
 # 🎯 Workshop: Claude Code Mastery
 
-Hands-on with Claude for real development tasks
+Master GitHub Actions automation with Claude Code
 
 ---
 layout: default
@@ -14,20 +14,20 @@ layout: default
 # Workshop Overview 🎯
 
 ## Goal
-Use Claude Code productively in real development scenarios and create a **Claude-powered GitHub Action**.
+Master Claude Code GitHub Actions for real development scenarios and build sophisticated **no-code automation workflows**.
 
 <div class="mt-8 grid grid-cols-4 gap-4">
 <div class="p-4 bg-blue-100 rounded-lg text-center">
-<strong>⏱️ Time</strong><br>60 minutes
+<strong>⏱️ Time</strong><br>45 minutes
 </div>
 <div class="p-4 bg-green-100 rounded-lg text-center">
 <strong>🎯 Level</strong><br>Intermediate
 </div>
 <div class="p-4 bg-purple-100 rounded-lg text-center">
-<strong>🛠️ Tools</strong><br>Claude, Cursor, GitHub
+<strong>🛠️ Tools</strong><br>Claude Code, GitHub
 </div>
 <div class="p-4 bg-orange-100 rounded-lg text-center">
-<strong>🏆 Outcome</strong><br>Productive Agent
+<strong>🏆 Outcome</strong><br>Production Workflows
 </div>
 </div>
 
@@ -35,587 +35,497 @@ Use Claude Code productively in real development scenarios and create a **Claude
 layout: default
 ---
 
-# Phase 1: Claude Setup & First Interaction (15 min)
+# Phase 1: Advanced Setup & Configuration (15 min)
 
-## Setup Checklist
+## Professional Repository Setup
 
-<div class="grid grid-cols-2 gap-8">
-<div>
-
-### 1. Claude.ai Account
-- [ ] Account created/verified
-- [ ] Claude 3.5 Sonnet access
-- [ ] API Key generated (if API access)
-
-### 2. Cursor Installation  
-- [ ] Cursor downloaded from cursor.sh
-- [ ] VS Code settings imported (optional)
-- [ ] Claude integration activated
-
-</div>
-<div>
-
-### 3. Test Repository
 ```bash
-# Clone workshop repo
-git clone https://github.com/your-org/claude-workshop
-cd claude-workshop
+# Create comprehensive demo project
+gh repo create claude-code-mastery --public --clone
+cd claude-code-mastery
 
-# Open in Cursor
-cursor .
-```
+# Project structure
+mkdir -p src/{components,services,utils} tests docs .github/{workflows,ISSUE_TEMPLATE}
 
-### 4. First Claude Interaction
-- Press `Cmd+K` in Cursor
-- Type "Analyze this codebase structure"
-- Evaluate Claude's response
+# Sample TypeScript React project
+cat > src/components/UserDashboard.tsx << 'EOF'
+import React, { useState, useEffect } from 'react';
+import { UserService } from '../services/UserService';
 
-</div>
-</div>
-
----
-layout: default
----
-
-# Phase 2: Code Analysis & Review (20 min) 
-
-## Challenge 1: Legacy Code Analysis
-
-```typescript
-// Given: Problematic Legacy Function
-function processUserData(users, options) {
-  var result = [];
-  for (var i = 0; i < users.length; i++) {
-    if (users[i].active == true) {
-      var userData = users[i];
-      userData.processedAt = new Date();
-      if (options && options.includeMetrics) {
-        userData.metrics = calculateMetrics(userData);
-      }
-      result.push(userData);
-    }
-  }
-  return result;
-}
-```
-
-### Claude Prompt
-```text
-@legacy/userProcessor.js
-
-Analyze this function and suggest improvements for:
-1. Modern JavaScript/TypeScript patterns
-2. Performance optimization  
-3. Type safety
-4. Error handling
-5. Testability
-
-Provide refactored code with explanations.
-```
-
----
-layout: default
----
-
-# Challenge 1: Expected Claude Output 
-
-```typescript
-// Claude's Refactored Version
 interface User {
   id: string;
-  active: boolean;
   name: string;
   email: string;
-  // ... other properties
 }
 
-interface ProcessingOptions {
-  includeMetrics?: boolean;
-  // ... other options
-}
-
-interface ProcessedUser extends User {
-  processedAt: Date;
-  metrics?: UserMetrics;
-}
-
-async function processUserData(
-  users: User[], 
-  options: ProcessingOptions = {}
-): Promise<ProcessedUser[]> {
-  if (!Array.isArray(users)) {
-    throw new Error('Users must be an array');
-  }
-
-  const activeUsers = users.filter(user => user.active === true);
-  
-  return Promise.all(
-    activeUsers.map(async (user) => {
-      const processedUser: ProcessedUser = {
-        ...user,
-        processedAt: new Date()
-      };
-
-      if (options.includeMetrics) {
-        try {
-          processedUser.metrics = await calculateMetrics(user);
-        } catch (error) {
-          console.warn(`Failed to calculate metrics for user ${user.id}:`, error);
-        }
-      }
-
-      return processedUser;
-    })
-  );
-}
-```
-
----
-layout: default
----
-
-# Challenge 2: Bug Detection & Fix (10 min)
-
-## Buggy React Component
-
-```typescript
-import { useState, useEffect } from 'react';
-
-function UserProfile({ userId }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+export const UserDashboard: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(true);
-    fetch(`/api/users/${userId}`)
-      .then(response => response.json())
-      .then(userData => {
-        setUser(userData);
-        setLoading(false);
-      });
+    // TODO: Add error handling
+    UserService.getUsers().then(setUsers).finally(() => setLoading(false));
   }, []);
 
   if (loading) return <div>Loading...</div>;
-  
+
   return (
     <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
+      {users.map(user => (
+        <div key={user.id}>{user.name} - {user.email}</div>
+      ))}
     </div>
   );
-}
-```
-
-### Claude Prompt
-```text
-Find and fix all bugs in this React component. 
-Explain each issue and provide the corrected version.
+};
+EOF
 ```
 
 ---
 layout: default
 ---
 
-# Challenge 2: Claude's Bug Analysis
+# Professional CLAUDE.md Configuration
 
-## Identified Issues:
+```markdown
+<!-- CLAUDE.md -->
+# Claude Code Configuration
 
-1. **Missing dependency**: `userId` not in useEffect deps
-2. **No error handling**: fetch can fail
-3. **Potential null access**: `user.name` when user is null  
-4. **Memory leak**: No cleanup for cancelled requests
-5. **Loading state**: Not reset on error
+## Project Overview
+TypeScript React application with Node.js backend for user management.
 
-```typescript
-// Claude's Fixed Version
-import { useState, useEffect, useRef } from 'react';
+**Tech Stack:**
+- Frontend: React 18, TypeScript, Tailwind CSS
+- Backend: Express.js, TypeScript, Prisma ORM  
+- Database: PostgreSQL
+- Testing: Jest, React Testing Library, Supertest
 
-function UserProfile({ userId }: { userId: string }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
+## Development Standards
 
-  useEffect(() => {
-    if (!userId) return;
+### Code Quality
+- Use TypeScript strict mode
+- Follow Airbnb ESLint configuration  
+- Prefer functional components with hooks
+- Use proper error boundaries
+- Implement proper loading states
 
-    // Cancel previous request
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
+### Security Requirements
+- Validate all user inputs
+- Sanitize data before database operations
+- Use parameterized queries (prevent SQL injection)
+- Implement proper authentication checks
+- Never expose sensitive data in API responses
 
-    const abortController = new AbortController();
-    abortControllerRef.current = abortController;
+### Performance Guidelines  
+- Implement proper React memoization
+- Use lazy loading for large components
+- Optimize database queries (avoid N+1)
+- Implement proper caching strategies
+- Monitor bundle size and performance
 
-    const fetchUser = async () => {
-      setLoading(true);
-      setError(null);
-      
-      try {
-        const response = await fetch(`/api/users/${userId}`, {
-          signal: abortController.signal
-        });
-        
-        if (!response.ok) {
-          throw new Error(`Failed to fetch user: ${response.statusText}`);
-        }
-        
-        const userData = await response.json();
-        setUser(userData);
-      } catch (err) {
-        if (err.name !== 'AbortError') {
-          setError(err.message);
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
+### Testing Standards
+- Minimum 80% code coverage
+- Test happy paths and error scenarios  
+- Mock external dependencies properly
+- Write integration tests for API endpoints
+- Include accessibility testing
 
-    fetchUser();
+## Review Process
 
-    // Cleanup
-    return () => {
-      abortController.abort();
-    };
-  }, [userId]);
+### Automatic Fixes Allowed
+- ESLint rule violations
+- Prettier formatting issues
+- Missing TypeScript types
+- Outdated dependencies (patch versions)
+- Missing JSDoc comments
 
-  if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
-  if (!user) return <div>No user found</div>;
-  
-  return (
-    <div>
-      <h1>{user.name}</h1>
-      <p>{user.email}</p>
-    </div>
-  );
-}
+### Manual Review Required
+- Breaking changes to public APIs
+- Database schema modifications
+- Security-related changes
+- Performance optimizations affecting UX
+- Major dependency updates
+
+### Communication Style
+- Be specific about issues and solutions
+- Provide code examples in suggestions
+- Explain the reasoning behind recommendations
+- Link to relevant documentation when helpful
+- Use clear, professional language
+
+## Workflow Customization
+
+### Issue Classification
+- `bug`: Code defects affecting functionality
+- `feature`: New functionality requests  
+- `enhancement`: Improvements to existing features
+- `security`: Security-related issues
+- `performance`: Performance optimization needs
+- `documentation`: Documentation updates needed
+
+### Pull Request Reviews
+Focus on:
+1. Functionality and correctness
+2. Security vulnerabilities
+3. Performance implications
+4. Code maintainability
+5. Test coverage adequacy
+6. Documentation completeness
 ```
 
 ---
 layout: default
 ---
 
-# Phase 3: Claude-powered GitHub Action (25 min)
+# Phase 2: Advanced Workflow Patterns (20 min)
 
-## Goal: Intelligent PR Analyzer
-
-### Step 1: Action Setup
+## Multi-Stage Development Pipeline
 
 ```yaml
-# .github/workflows/claude-pr-analyzer.yml
-name: Claude PR Analyzer
+name: Advanced Claude Development Pipeline
 on:
+  issues:
+    types: [opened, labeled, assigned]
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize, ready_for_review]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly Monday health check
 
 jobs:
-  claude-analysis:
+  issue-intelligence:
+    if: github.event_name == 'issues' && github.event.action == 'opened'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    
     steps:
-      - uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
         with:
-          fetch-depth: 0
-          
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **ISSUE ANALYSIS TASK:**
+            
+            1. **Classification**: Determine issue type (bug/feature/enhancement/security/performance)
+            2. **Complexity Assessment**: Rate 1-5 scale with reasoning
+            3. **Impact Analysis**: Assess user/business impact
+            4. **Technical Scope**: Identify affected components/files
+            5. **Implementation Plan**: Provide high-level approach
+            6. **Label Suggestions**: Recommend appropriate GitHub labels
+            7. **Assignment Recommendation**: Suggest team member if applicable
+            
+            **Output Format:**
+            - Add appropriate labels to the issue
+            - Post detailed analysis as comment
+            - Create implementation checklist if complex feature
+          claude_args: "--max-turns 5"
+
+  feature-implementation:
+    if: contains(github.event.issue.labels.*.name, 'auto-implement')
+    needs: issue-intelligence
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
         with:
-          node-version: '20'
-          
-      - name: Install Claude SDK
-        run: npm install @anthropic-ai/sdk @octokit/rest
-        
-      - name: Run Claude Analysis
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: node .github/scripts/claude-analyzer.js
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **AUTO-IMPLEMENTATION REQUEST:**
+            
+            Based on the issue analysis, implement the requested feature:
+            
+            1. **Create feature branch** with descriptive name
+            2. **Implement solution** following our coding standards
+            3. **Add comprehensive tests** (unit + integration)
+            4. **Update documentation** as needed
+            5. **Create pull request** with detailed description
+            
+            **Requirements:**
+            - Follow TypeScript/React best practices
+            - Include error handling and loading states  
+            - Add JSDoc comments for new functions
+            - Ensure accessibility compliance
+            - Maintain backward compatibility
+          claude_args: "--max-turns 15"
 ```
 
 ---
 layout: default
 ---
 
-# Step 2: Claude Analyzer Script
+# Specialized Review Workflows
 
-```javascript
-// .github/scripts/claude-analyzer.js
-const Anthropic = require('@anthropic-ai/sdk');
-const { Octokit } = require('@octokit/rest');
-const { execSync } = require('child_process');
+## Security-First Review Process
+```yaml
+  security-review:
+    if: |
+      github.event_name == 'pull_request' &&
+      (contains(github.event.pull_request.title, 'auth') ||
+       contains(github.event.pull_request.title, 'security') ||
+       contains(github.event.pull_request.labels.*.name, 'security'))
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **SECURITY REVIEW MODE - CRITICAL ANALYSIS**
+            
+            Perform comprehensive security audit:
+            
+            **Authentication & Authorization:**
+            - Verify proper authentication checks
+            - Check for privilege escalation vulnerabilities
+            - Validate session management
+            - Review JWT implementation if applicable
+            
+            **Input Validation & Sanitization:**
+            - Check for SQL injection vulnerabilities
+            - Verify XSS prevention measures
+            - Validate input sanitization
+            - Review file upload security
+            
+            **Data Protection:**
+            - Check for sensitive data exposure
+            - Verify encryption for sensitive data
+            - Review logging practices (no sensitive data)
+            - Validate API response filtering
+            
+            **Infrastructure Security:**
+            - Review dependency vulnerabilities
+            - Check for hardcoded secrets
+            - Validate environment variable usage
+            - Review CORS configuration
+            
+            **Output Requirements:**
+            - Security rating (1-10 scale)
+            - Detailed findings with severity levels
+            - Specific remediation steps
+            - Code examples for fixes
+            
+            Block PR if critical security issues found.
+          claude_args: "--max-turns 10"
 
-const anthropic = new Anthropic({
-  apiKey: process.env.ANTHROPIC_API_KEY,
-});
-
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN,
-});
-
-async function analyzePR() {
-  try {
-    // Get PR details
-    const prNumber = process.env.GITHUB_REF.split('/')[2];
-    const [owner, repo] = process.env.GITHUB_REPOSITORY.split('/');
-    
-    const { data: pr } = await octokit.rest.pulls.get({
-      owner,
-      repo,
-      pull_number: prNumber,
-    });
-
-    // Get diff
-    const diff = execSync('git diff origin/main...HEAD', { encoding: 'utf8' });
-    
-    // Get changed files
-    const { data: files } = await octokit.rest.pulls.listFiles({
-      owner,
-      repo,
-      pull_number: prNumber,
-    });
-
-    await analyzeWithClaude(pr, diff, files, { owner, repo, prNumber });
-    
-  } catch (error) {
-    console.error('Claude analysis failed:', error);
-    process.exit(1);
-  }
-}
+  performance-analysis:
+    if: |
+      github.event_name == 'pull_request' &&
+      contains(github.event.pull_request.labels.*.name, 'performance')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **PERFORMANCE OPTIMIZATION ANALYSIS**
+            
+            Analyze this PR for performance implications:
+            
+            **Frontend Performance:**
+            - React component optimization opportunities
+            - Bundle size impact analysis
+            - Lazy loading implementation
+            - Memoization usage (React.memo, useMemo, useCallback)
+            
+            **Backend Performance:**
+            - Database query efficiency
+            - N+1 query detection
+            - Caching opportunities
+            - API response optimization
+            
+            **General Performance:**
+            - Algorithm efficiency
+            - Memory usage patterns
+            - Async operation optimization
+            - Resource cleanup
+            
+            **Benchmarking Requests:**
+            - Suggest performance tests to add
+            - Recommend monitoring metrics
+            - Identify load testing scenarios
+            
+            Provide specific, actionable recommendations.
+          claude_args: "--max-turns 8"
 ```
 
 ---
 layout: default
 ---
 
-# Step 3: Claude Intelligence Layer
+# Phase 3: Advanced Use Cases (10 min)
 
-```javascript
-async function analyzeWithClaude(pr, diff, files, { owner, repo, prNumber }) {
-  const prompt = `You are a senior software engineer reviewing a Pull Request.
+## Intelligent Documentation System
 
-PR DETAILS:
-Title: ${pr.title}
-Description: ${pr.body || 'No description provided'}
-Author: ${pr.user.login}
-Files changed: ${files.length}
-
-FILES AFFECTED:
-${files.map(f => `- ${f.filename} (+${f.additions}, -${f.deletions})`).join('\n')}
-
-CODE CHANGES:
-${diff}
-
-ANALYSIS FRAMEWORK:
-1. **Code Quality** (0-10): Readability, maintainability, best practices
-2. **Security** (0-10): Vulnerabilities, input validation, sensitive data
-3. **Performance** (0-10): Efficiency, memory usage, algorithmic complexity  
-4. **Testing** (0-10): Test coverage, test quality, edge cases
-5. **Documentation** (0-10): Comments, README updates, API docs
-
-For each category:
-- Provide score and rationale
-- List specific issues found
-- Suggest concrete improvements
-- Highlight any blocking concerns
-
-FORMAT:
-## 🤖 Claude PR Analysis
-
-### Summary
-[Brief overall assessment]
-
-### Scores
-- Code Quality: X/10 - [rationale]
-- Security: X/10 - [rationale]  
-- Performance: X/10 - [rationale]
-- Testing: X/10 - [rationale]
-- Documentation: X/10 - [rationale]
-
-### Detailed Findings
-[Specific issues with line references]
-
-### Recommendations
-[Actionable improvement suggestions]
-
-### Approval Status
-❌ Needs Changes | ⚠️ Minor Issues | ✅ Approved`;
-
-  const response = await anthropic.messages.create({
-    model: 'claude-3-5-sonnet-20241022',
-    max_tokens: 2000,
-    messages: [
-      { role: 'user', content: prompt }
-    ],
-  });
-
-  const analysis = response.content[0].text;
-  
-  // Post analysis as PR comment
-  await octokit.rest.issues.createComment({
-    owner,
-    repo,
-    issue_number: prNumber,
-    body: analysis,
-  });
-
-  console.log('✅ Claude analysis posted successfully!');
-}
-
-analyzePR();
+```yaml
+  documentation-automation:
+    if: |
+      contains(github.event.pull_request.changed_files, 'src/') ||
+      contains(github.event.issue.labels.*.name, 'documentation')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **DOCUMENTATION UPDATE AUTOMATION**
+            
+            Review and update project documentation:
+            
+            **API Documentation:**
+            - Generate/update OpenAPI specs for new endpoints
+            - Create usage examples with code samples
+            - Document request/response schemas
+            - Include error handling examples
+            
+            **Code Documentation:**
+            - Add JSDoc comments for new functions/classes
+            - Update inline comments for complex logic
+            - Create/update component documentation
+            - Document configuration options
+            
+            **User Documentation:**
+            - Update README.md with new features
+            - Create/update setup instructions
+            - Document environment variables
+            - Update troubleshooting guides
+            
+            **Developer Documentation:**
+            - Update contribution guidelines
+            - Document new development patterns
+            - Update testing instructions
+            - Document architectural decisions
+            
+            Automatically commit documentation updates to feature branch.
+          claude_args: "--max-turns 12"
 ```
 
----
-layout: default
----
+## Proactive Maintenance System
 
-# Enhancement: Smart Labels & Actions
-
-```javascript
-// Add intelligent labeling based on Claude analysis
-async function addSmartLabels(analysis, { owner, repo, prNumber }) {
-  const labels = [];
-  
-  // Extract scores from analysis
-  const scores = extractScores(analysis);
-  
-  // Add labels based on analysis
-  if (scores.security < 7) labels.push('security-review-needed');
-  if (scores.performance < 6) labels.push('performance-concern');  
-  if (scores.testing < 5) labels.push('needs-tests');
-  if (scores.documentation < 4) labels.push('needs-documentation');
-  
-  // Size labels
-  const diff = execSync('git diff --stat origin/main...HEAD', { encoding: 'utf8' });
-  const changedLines = parseInt(diff.match(/(\d+) insertions/)?.[1] || 0) + 
-                      parseInt(diff.match(/(\d+) deletions/)?.[1] || 0);
-  
-  if (changedLines < 50) labels.push('size/small');
-  else if (changedLines < 200) labels.push('size/medium');  
-  else labels.push('size/large');
-
-  // Apply labels
-  if (labels.length > 0) {
-    await octokit.rest.issues.addLabels({
-      owner,
-      repo,
-      issue_number: prNumber,
-      labels,
-    });
-  }
-}
-
-function extractScores(analysis) {
-  const scores = {};
-  const lines = analysis.split('\n');
-  
-  for (const line of lines) {
-    const match = line.match(/- (\w+): (\d+)\/10/);
-    if (match) {
-      scores[match[1].toLowerCase()] = parseInt(match[2]);
-    }
-  }
-  
-  return scores;
-}
-```
-
----
-layout: default
----
-
-# Testing & Validation 🧪
-
-## Create Test Cases
-
-1. **Simple PR**: README update → Minimal Claude response
-2. **Bug Fix**: Code change with tests → Positive review  
-3. **Security Issue**: Hardcoded passwords → Security warning
-4. **Performance Problem**: Inefficient algorithm → Performance alert
-5. **Breaking Change**: API modification → Documentation request
-
-```javascript
-// Test different PR types
-const testScenarios = [
-  {
-    name: 'Documentation Update',
-    files: ['README.md'],
-    expectedLabels: ['documentation', 'size/small']
-  },
-  {
-    name: 'Security Fix', 
-    files: ['auth/security.js'],
-    content: 'remove hardcoded API key',
-    expectedLabels: ['security-review-needed']
-  },
-  // ... more scenarios
-];
+```yaml
+  weekly-health-check:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            **WEEKLY CODEBASE HEALTH ASSESSMENT**
+            
+            Perform comprehensive project health check:
+            
+            **Code Quality Analysis:**
+            - Identify code smell patterns
+            - Check for technical debt accumulation
+            - Review test coverage trends
+            - Analyze complexity metrics
+            
+            **Security Audit:**
+            - Check for new dependency vulnerabilities
+            - Review recent security advisories
+            - Validate security configurations
+            - Check for exposed secrets
+            
+            **Performance Monitoring:**
+            - Analyze bundle size trends
+            - Check for performance regression patterns
+            - Review database query efficiency
+            - Monitor memory usage patterns
+            
+            **Maintenance Tasks:**
+            - Identify outdated dependencies
+            - Find unused code/dependencies
+            - Check for deprecated API usage
+            - Review TODO/FIXME comments
+            
+            **Issue & PR Management:**
+            - Analyze open issue patterns
+            - Review stale PRs
+            - Identify blocked issues
+            - Suggest priority adjustments
+            
+            **Output:**
+            - Create weekly health report issue
+            - Generate maintenance task checklist
+            - Create PRs for safe automated fixes
+            - Alert team of critical issues
+          claude_args: "--max-turns 20"
 ```
 
 ---
 layout: fact
 ---
 
-# 🏆 Workshop Success Criteria
+# 🏆 Mastery Achievements
 
 <div class="text-xl">
 
-✅ **Claude Setup**: Productive in Cursor/Web interface  
-✅ **Code Analysis**: Legacy code successfully refactored  
-✅ **Bug Detection**: React bugs found & fixed  
-✅ **GitHub Action**: Claude analyzer deployed & tested  
-✅ **Intelligence**: Smart labels & actions working  
+✅ **Advanced Setup** - Professional CLAUDE.md configuration  
+✅ **Multi-Stage Pipelines** - Complex workflow orchestration  
+✅ **Security Integration** - Automated security reviews  
+✅ **Performance Analysis** - Automated optimization suggestions  
+✅ **Documentation Automation** - Self-updating documentation  
+✅ **Proactive Maintenance** - Scheduled health monitoring  
 
 </div>
 
 <div class="text-center mt-8 p-4 bg-green-100 rounded-lg">
-<strong>Outcome:</strong> Claude is now part of your development workflow! 🚀
+<strong>Outcome:</strong> Enterprise-grade AI automation without custom code! 🚀
 </div>
 
 ---
 layout: default
 ---
 
-# Next Steps & Extensions 📈
+# Real-World Application Examples 📈
 
-## Immediate Improvements
-- **Custom Prompts** for team-specific reviews
-- **Integration Testing** with Claude analysis
-- **Slack Notifications** for critical issues  
-- **Metrics Dashboard** for Claude performance
+## Production Success Patterns
 
-## Advanced Features
-- **Multi-Agent Review**: Security + Performance + Quality agents
-- **Learning Loop**: Claude learns from team feedback
-- **Predictive Analysis**: Bug prediction based on patterns
-- **Auto-Fix Generation**: Claude suggests code fixes
+<div class="grid grid-cols-2 gap-8">
+<div>
 
-```typescript
-// Future Vision: Auto-implementing fixes
-class AutoFixAgent {
-  async generateFix(issue) {
-    const fix = await claude.generateCodeFix(issue);
-    const tests = await claude.generateTests(fix);
-    const pr = await github.createPR({ fix, tests });
-    return pr;
-  }
-}
-```
+### E-Commerce Platform
+- **Auto-scaling** product review analysis
+- **Security monitoring** for payment flows
+- **Performance optimization** for checkout
+- **A/B testing** automation via Claude
+
+### SaaS Application  
+- **Feature request** auto-implementation
+- **Customer support** ticket analysis
+- **Performance monitoring** alerts
+- **Documentation** auto-generation
+
+</div>
+<div>
+
+### Open Source Project
+- **Contributor onboarding** automation
+- **Issue triage** and classification
+- **Code quality** maintenance
+- **Release note** generation
+
+### Enterprise Internal Tool
+- **Compliance checking** automation
+- **Code review** standardization  
+- **Security audit** workflows
+- **Technical debt** management
+
+</div>
+</div>
+
+## Key Success Factors
+
+1. **Clear CLAUDE.md** configuration
+2. **Specific prompts** for each use case  
+3. **Appropriate max-turns** settings
+4. **Error handling** and fallbacks
+5. **Regular workflow** optimization
 
 ---
 layout: center
 class: text-center
 ---
 
-# 🎉 Claude Code Mastery Achieved!
+# 🎉 Claude Code Mastery Complete!
 
-## You've created an intelligent development assistant
+## You've built enterprise-grade AI automation
 
-### Next Step: GitHub Workflows for automation
+### Final Step: Advanced GitHub Workflows for complete automation
 
 <div class="text-sm mt-8 opacity-75">
-Ready for the final module?
+Ready for the ultimate automation platform?
 </div>

@@ -16,11 +16,13 @@ layout: default
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # From Manual to Automated
+
+::left::
 
 ## 👨‍💻 Traditional
 - Developer writes code

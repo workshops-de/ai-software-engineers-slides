@@ -5,8 +5,8 @@ class: text-center
 
 # GitHub Workflows
 
-## Event-driven automation that enables autonomous development pipelines
+## Claude Code automation platform for complete development lifecycle
 
 <div class="text-lg mt-8 opacity-75">
-GitHub Actions provide the foundation for agents to automatically respond to code changes and execute tasks
+Sophisticated GitHub Actions workflows orchestrate Claude Code for end-to-end autonomous development
 </div>

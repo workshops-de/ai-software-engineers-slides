@@ -28,11 +28,13 @@ independently execute, analyze, and optimize code-related tasks.
 - **📊 Context-aware**: Fully understand code context
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Agent vs. Tool 🆚
+
+::left::
 
 ## 🛠️ Traditional Tool
 ```yaml
@@ -62,35 +64,6 @@ Human: Reviews final result
 - Learns from patterns
 - End-to-end automation
 
----
-layout: default
----
-
-# Agentic Architecture 🏗️
-
-```mermaid {theme: 'base', scale: 0.7}
-graph TD
-    A[Event Trigger] --> B[Agent Controller]
-    B --> C[Context Analyzer]
-    B --> D[Task Planner]
-    B --> E[Tool Orchestrator]
-    
-    C --> F[Code Analysis]
-    C --> G[Git History]
-    C --> H[Dependencies]
-    
-    D --> I[Task Queue]
-    D --> J[Priority Resolver]
-    
-    E --> K[Code Generator]
-    E --> L[Test Runner]
-    E --> M[Git Commands]
-    E --> N[API Calls]
-    
-    I --> O[Execution Engine]
-    O --> P[Result Validator]
-    P --> Q[Human Feedback Loop]
-```
 
 ---
 layout: default
@@ -120,11 +93,13 @@ layout: default
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Reactive vs. Proactive Agents
+
+::left::
 
 ## ⚡ Reactive Agents
 - React to **Events**
@@ -156,45 +131,6 @@ cron.schedule('0 2 * * *', async () => {
 });
 ```
 
----
-layout: default
----
-
-# Agent Communication Patterns 📡
-
-## 1. Event Bus Pattern
-```typescript
-const eventBus = new EventBus();
-
-eventBus.subscribe('code.changed', (event) => {
-  testAgent.run(event.files);
-  lintAgent.check(event.files);
-});
-```
-
-## 2. Pipeline Pattern  
-```typescript
-const pipeline = new AgentPipeline([
-  codeAnalysisAgent,
-  testGenerationAgent, 
-  codeReviewAgent,
-  deploymentAgent
-]);
-
-await pipeline.execute(pullRequest);
-```
-
-## 3. Orchestrator Pattern
-```typescript
-class WorkflowOrchestrator {
-  async handleIssue(issue) {
-    const analysis = await analysisAgent.process(issue);
-    const code = await codeGenAgent.generate(analysis);
-    const tests = await testAgent.create(code);
-    return await prAgent.submit(code, tests);
-  }
-}
-```
 
 ---
 layout: fact
@@ -202,30 +138,21 @@ layout: fact
 
 # 5 Levels of Agentic Autonomy
 
-<div class="text-2xl">
+<div class="flex flex-col items-center">
 
-**Level 0**: Manual - Everything manual  
-**Level 1**: Assisted - Tool supports  
-**Level 2**: Partial - Agent executes sub-tasks  
-**Level 3**: Conditional - Agent decides in known cases  
-**Level 4**: High - Agent acts autonomously with human oversight  
-**Level 5**: Full - Fully autonomous agents  
+  <div class="text-1xl text-left max-w-xl">
 
-</div>
+  **Level 0**: Manual - Everything manual  
+  **Level 1**: Assisted - Tool supports  
+  **Level 2**: Partial - Agent executes sub-tasks  
+  **Level 3**: Conditional - Agent decides in known cases  
+  **Level 4**: High - Agent acts autonomously with human oversight  
+  **Level 5**: Full - Fully autonomous agents  
 
-<div class="text-center mt-8 text-lg opacity-75">
-Today: Level 2-3 | Future: Level 4-5
-</div>
+  </div>
 
----
-layout: center
-class: text-center
----
+  <div class="mt-8 text-lg opacity-75 text-left max-w-xl">
+    Today: Level 2-3 | Future: Level 4-5
+  </div>
 
-# 🎯 Next Step
-
-## Claude Code as a concrete tool for Agentic Development
-
-<div class="text-sm mt-8 opacity-75">
-From theory to practice
 </div>

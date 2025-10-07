@@ -4,488 +4,406 @@ layout: section
 
 # How to use Claude Code?
 
-Practical application and best practices
+Practical GitHub Actions automation and prompt patterns
 
 ---
 layout: default
 ---
 
-# Claude Code Access Options 🔑
+# Claude Code GitHub Actions Setup 🔑
 
 <div class="grid grid-cols-3 gap-6">
 <div class="p-4 bg-blue-50 rounded-lg">
 
-### 🌐 Claude.ai
-- **Web Interface**
-- Basic Code Capabilities
-- File Upload possible
-- No direct IDE access
+### 🚀 Quick Setup
+- **Claude CLI**: `/install-github-app`
+- **GitHub App**: One-click install
+- **API Key**: Auto-configured
+- **Workflow**: Generated automatically
 
-**Best for:** Code Reviews, Explanations
+**Best for:** Getting started fast
 
 </div>
 <div class="p-4 bg-green-50 rounded-lg">
 
-### 💻 Cursor Editor  
-- **Native Claude Integration**
-- Full Codebase Access
-- AI-powered Features
-- MCP Support
+### ⚙️ Manual Setup
+- **GitHub App**: https://github.com/apps/claude
+- **Repository Secrets**: Manual config
+- **Workflow Files**: Custom creation
+- **CLAUDE.md**: Behavior customization
 
-**Best for:** Active Development
+**Best for:** Custom configurations
 
 </div>
 <div class="p-4 bg-purple-50 rounded-lg">
 
-### 🔌 API Integration
-- **Custom Implementations**
-- Workflow Automation  
-- CI/CD Integration
-- Enterprise Solutions
+### 🏢 Enterprise Setup
+- **Bedrock/Vertex**: Cloud AI providers
+- **Custom Authentication**: OIDC/IAM roles
+- **Private Networks**: VPC configurations
+- **Compliance**: SOC2/GDPR ready
 
-**Best for:** Automation & Scaling
+**Best for:** Large organizations
 
 </div>
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
-# Getting Started: Cursor Setup 🚀
+# Getting Started: Basic Workflow 🚀
 
-## Installation & Config
+::left::
+
+## Installation Steps
 
 ```bash
-# Download Cursor from cursor.sh
-# Import existing VS Code settings
-cursor --import-settings
+# 1. Open Claude Code terminal
+claude
 
-# Configure Claude API
-# Settings → Extensions → Claude
-{
-  "claude.apiKey": "your-api-key",
-  "claude.model": "claude-3-5-sonnet-20241022",
-  "claude.contextWindow": 200000
-}
+# 2. Install GitHub integration
+/install-github-app
+
+# 3. Follow prompts:
+# - Select repository
+# - Install Claude GitHub App  
+# - Configure API key
+# - Create workflow file
 ```
+
+## Generated Workflow
+```yaml
+# .github/workflows/claude.yml
+name: Claude Code
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+jobs:
+  claude:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+::right::
 
 ## First Interaction
-```typescript
-// Cmd+K in Cursor activates Claude
-// Example conversation:
-// User: "Add error handling to this function"
-// Claude analyzes context and suggests improvements
+```markdown
+<!-- In any GitHub issue -->
+We have a performance problem with the user dashboard.
+It takes 5+ seconds to load.
+
+@claude Please analyze the performance bottleneck 
+and suggest optimizations
 ```
 
-::right::
-
-## Key Shortcuts in Cursor
-
-| Shortcut | Action |
-|----------|--------|
-| `Cmd+K` | Start Claude chat |
-| `Cmd+Shift+K` | Claude with file context |
-| `Cmd+I` | Inline Claude suggestions |
-| `Cmd+L` | Add to Claude context |
-
-<div class="mt-4 p-4 bg-green-100 rounded-lg text-sm">
-<strong>Tip:</strong> Use `@filename` to include specific files in context
-</div>
+**Claude's Response:**
+- Analyzes codebase automatically
+- Identifies performance issues
+- Creates optimized solution
+- Submits pull request with fixes
+- Includes performance benchmarks
 
 ---
 layout: default
 ---
 
-# Effective Prompting Strategies 🎯
+# Effective Claude Prompting 🎯
 
-## 1. Context-First Prompting
-```typescript
-// ❌ Vague
-"Fix this code"
+## 1. Context-Rich Prompts
+```markdown
+@claude This React component handles user authentication.
+The login form should validate email format before API calls.
 
-// ✅ Context-rich
-"This React component handles user authentication. 
-The login function should validate email format before API call.
-Current issue: Users can submit invalid emails.
-Please add proper validation while maintaining existing UX."
+Current issue: Users can submit invalid emails causing API errors.
+
+Please:
+1. Add client-side email validation
+2. Show user-friendly error messages  
+3. Prevent unnecessary API calls
+4. Maintain existing UX flow
 ```
 
-## 2. Specific Output Requests
-```typescript
-// ❌ General
-"Make this better"
-
-// ✅ Specific  
-"Refactor this function to:
-1. Use async/await instead of promises
-2. Add TypeScript types
-3. Include error handling with try/catch
-4. Maintain backward compatibility"
+## 2. Specific Task Instructions
+```markdown
+@claude Refactor the payment processing function to:
+- Use async/await instead of Promise chains
+- Add proper error handling with try/catch
+- Include TypeScript types for all parameters
+- Write unit tests covering success and failure cases
+- Update JSDoc documentation
 ```
 
 ---
 layout: default
 ---
 
-# Claude Workflows for Typical Tasks 📋
+# Advanced Workflow Patterns 📋
 
-## Code Review Workflow
-```typescript
-// 1. Load file context
-"@src/components/UserProfile.tsx analyze this component for:"
+## Multi-Event Automation
+```yaml
+name: Comprehensive Claude Workflow
+on:
+  issues:
+    types: [opened, labeled]
+  pull_request:
+    types: [opened, synchronize, closed]
+  schedule:
+    - cron: '0 9 * * 1'  # Monday mornings
 
-// 2. Specific review points
-"- Performance issues
-- Security vulnerabilities  
-- Code quality improvements
-- TypeScript type safety"
+jobs:
+  issue-handler:
+    if: github.event_name == 'issues'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Analyze this issue and:
+            1. Classify type (bug/feature/question)
+            2. Estimate complexity (1-5)
+            3. Add appropriate labels
+            4. Create implementation plan if needed
 
-// 3. Action items
-"Provide specific refactoring suggestions with code examples"
-```
-
-## Debugging Workflow  
-```typescript
-// 1. Describe problem
-"This async function fails intermittently with Promise rejection"
-
-// 2. Include relevant files
-"@src/services/api.ts @src/utils/retry.ts"
-
-// 3. Error context
-"Error occurs when network is slow. Stack trace: [paste here]"
-
-// 4. Solution request
-"Suggest robust error handling and retry logic"
+  pr-reviewer:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: "/review --security --performance --style"
+          
+  weekly-maintenance:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Weekly codebase health check:
+            - Review open issues and PRs
+            - Check dependency vulnerabilities
+            - Analyze code quality trends
+            - Generate maintenance report
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
-# Advanced Claude Patterns 🔥
+# CLAUDE.md Configuration 🔧
 
-## Multi-file Refactoring
-```typescript
-// Claude can orchestrate large refactorings
-"I want to migrate from Redux to Zustand:
+::left::
 
-Files to update:
-@src/store/redux-store.ts
-@src/hooks/useAppState.ts  
-@src/components/UserDashboard.tsx
+## Project Behavior Setup
+```markdown
+<!-- CLAUDE.md -->
+# Claude Configuration
 
-Provide step-by-step migration plan with:
-1. New Zustand store structure
-2. Hook replacements
-3. Component updates
-4. Testing strategy"
+## Project Context
+TypeScript React application with Node.js backend
+- Frontend: React 18, TypeScript, Tailwind CSS
+- Backend: Express.js, PostgreSQL, Prisma ORM
+- Testing: Jest, React Testing Library
+
+## Coding Standards
+- Use TypeScript strict mode
+- Follow Airbnb ESLint configuration
+- Prefer functional components with hooks
+- Write comprehensive JSDoc comments
+
+## Review Guidelines
+- Security: Check for XSS, SQL injection
+- Performance: Identify N+1 queries, memory leaks
+- Accessibility: Verify WCAG 2.1 compliance
+- Testing: Require 80% code coverage
+
+## Auto-fix Permissions
+- Fix ESLint errors automatically
+- Update package dependencies (patch only)
+- Format code with Prettier
+- Generate missing TypeScript types
 ```
 
 ::right::
 
-## Architecture Review
-```typescript  
-// Claude analyzes entire architecture
-"Review the architecture of this Express API:
-
-@src/routes/
-@src/controllers/
-@src/services/  
-@src/models/
-
-Evaluate:
-- Separation of concerns
-- Error handling consistency
-- Database query efficiency
-- Security best practices
-
-Suggest improvements with rationale"
-```
-
----
-layout: default
----
-
-# MCP Integration in Practice 🔌
-
-## GitHub MCP Setup
-```typescript
-// Install GitHub MCP Server
-npm install @anthropic/github-mcp-server
-
-// Configure in Cursor settings
-{
-  "mcp": {
-    "servers": {
-      "github": {
-        "command": "npx",
-        "args": ["@anthropic/github-mcp-server"],
-        "env": {
-          "GITHUB_TOKEN": "your-token"
-        }
-      }
-    }
-  }
-}
-```
-
-## Using GitHub MCP
-```typescript
-// Claude can now execute GitHub operations directly
-"Create a new issue for the bug we just discussed:
-Title: 'User profile validation missing'
-Body: Include the fix we implemented
-Labels: bug, high-priority
-Assign to: @me"
-```
-
----
-layout: default
----
-
-# Testing with Claude 🧪
-
-## Test Generation Workflow
-```typescript
-// 1. Provide context
-"@src/utils/validation.ts 
-Generate comprehensive unit tests for this validation utility"
-
-// 2. Specify test requirements
-"Include tests for:
-- Valid inputs (happy path)
-- Invalid inputs (error cases)  
-- Edge cases (empty, null, undefined)
-- Type safety validation
-- Performance with large inputs"
-
-// 3. Test framework preference
-"Use Jest with TypeScript. Follow AAA pattern (Arrange, Act, Assert)"
-```
-
-## Claude's Test Output
-```typescript
-// Claude generates structured tests
-describe('ValidationUtils', () => {
-  describe('validateEmail', () => {
-    it('should validate correct email formats', () => {
-      // Test implementation
-    });
-    
-    it('should reject invalid email formats', () => {
-      // Test implementation  
-    });
-    
-    it('should handle edge cases gracefully', () => {
-      // Test implementation
-    });
-  });
-});
-```
-
----
-layout: default
----
-
-# Documentation with Claude 📚
-
-## API Documentation
-```typescript
-// Prompt for API docs
-"@src/api/routes/users.ts
-Generate OpenAPI/Swagger documentation for all routes in this file.
-Include:
-- Request/Response schemas
-- Error responses
-- Authentication requirements
-- Example requests"
-```
-
-## Code Comments
-```typescript
-// Before: Undocumented function
-function processUserData(data, options) {
-  // Complex logic without explanation
-}
-
-// Claude's enhanced version with JSDoc
-/**
- * Processes raw user data according to specified options
- * @param {Object} data - Raw user data from external source
- * @param {ProcessingOptions} options - Configuration for processing
- * @param {boolean} options.sanitize - Whether to sanitize input
- * @param {string[]} options.allowedFields - Fields to include in output
- * @returns {Promise<ProcessedUser>} Processed and validated user object
- * @throws {ValidationError} When data format is invalid
- */
-async function processUserData(data, options) {
-  // Implementation with clear comments
-}
-```
-
----
-layout: default
----
-
-# Performance Optimization with Claude ⚡
-
-## Analysis Prompt
-```typescript
-"@src/components/DataTable.tsx
-This component renders slowly with large datasets (>1000 rows).
-Analyze performance bottlenecks and suggest optimizations:
-
-1. React rendering optimization
-2. Memory usage reduction  
-3. Scroll virtualization options
-4. Caching strategies
-5. Code splitting opportunities"
-```
-
-## Claude's Optimization Suggestions
-```typescript
-// Before: Naive implementation
-function DataTable({ data }) {
-  return (
-    <table>
-      {data.map(row => <TableRow key={row.id} data={row} />)}
-    </table>
-  );
-}
-
-// Claude's optimized version
-import { FixedSizeList as List } from 'react-window';
-
-const DataTable = ({ data }) => {
-  const Row = useCallback(({ index, style }) => (
-    <div style={style}>
-      <TableRow data={data[index]} />
-    </div>
-  ), [data]);
-
-  return (
-    <List height={600} itemCount={data.length} itemSize={50}>
-      {Row}
-    </List>
-  );
-};
-```
-
----
-layout: two-cols
-layoutClass: gap-16
----
-
-# Error Handling Best Practices 🛡️
-
-## Claude Prompt Strategy
-```typescript
-"Review error handling in this service:
-@src/services/payment.ts
-
-Requirements:
-- Proper error types/hierarchy
-- Logging with context
-- User-friendly messages
-- Retry logic for transient failures
-- Circuit breaker pattern"
-```
-
-::right::
-
-## Claude's Enhanced Error Handling
-```typescript
-class PaymentError extends Error {
-  constructor(message, code, details) {
-    super(message);
-    this.code = code;
-    this.details = details;
-  }
-}
-
-class PaymentService {
-  async processPayment(data) {
-    try {
-      return await this.apiCall(data);
-    } catch (error) {
-      this.logger.error('Payment failed', {
-        userId: data.userId,
-        amount: data.amount,
-        error: error.message
-      });
+## Workflow-Specific Prompts
+```yaml
+# Specialized workflows
+- uses: anthropics/claude-code-action@v1
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    prompt: |
+      SECURITY AUDIT MODE:
       
-      if (this.isRetryable(error)) {
-        return await this.retryWithBackoff(data);
-      }
+      Perform comprehensive security review:
+      - Scan for OWASP Top 10 vulnerabilities
+      - Check authentication/authorization flows
+      - Validate input sanitization
+      - Review dependency security
+      - Generate security report
       
-      throw new PaymentError(
-        'Payment processing failed',
-        error.code,
-        error.details
-      );
-    }
-  }
-}
+      Create security fixes as separate PR if issues found.
+    claude_args: "--max-turns 10"
 ```
 
 ---
 layout: default
 ---
 
-# Claude Code Review Checklist ✅
+# Slash Commands & Built-in Features ⚡
 
-## Automated Review Points
-```typescript
-"Review this PR with focus on:
-
-✅ Code Quality
-- Readability and maintainability
-- DRY principle adherence
-- Proper naming conventions
-
-✅ Performance  
-- Algorithmic efficiency
-- Memory usage optimization
-- Async/await best practices
-
-✅ Security
-- Input validation
-- SQL injection prevention
-- XSS vulnerability checks
-
-✅ Testing
-- Test coverage adequacy
-- Edge case handling
-- Mocking strategies
-
-✅ Documentation
-- Code comments clarity
-- API documentation completeness
-- README updates needed"
+## Available Slash Commands
+```yaml
+# In workflow or @claude mentions:
+/review                    # Comprehensive code review
+/review --security         # Security-focused review
+/review --performance      # Performance analysis
+/test                      # Generate test cases
+/document                  # Create/update documentation
+/refactor                  # Code improvement suggestions
+/fix                       # Auto-fix identified issues
 ```
+
+## Usage Examples
+```markdown
+<!-- In PR comment -->
+@claude /review --security --performance
+
+<!-- In issue -->
+@claude /test --coverage=80 --edge-cases
+
+<!-- In issue with specific file -->
+@claude /document src/api/user-service.js --format=jsdoc
+```
+
+---
+layout: default
+---
+
+# Error Handling & Fallbacks 🛡️
+
+## Robust Workflow Setup
+```yaml
+jobs:
+  claude-with-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Primary Claude Analysis
+        id: claude
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: "--max-turns 5 --timeout 300"
+          
+      - name: Fallback Notification
+        if: steps.claude.outcome == 'failure'
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const comment = `⚠️ Claude analysis encountered an issue.
+            
+            **Possible causes:**
+            - API rate limits reached
+            - Complex codebase analysis timeout  
+            - Network connectivity issues
+            
+            **Next steps:**
+            - Try again in a few minutes
+            - Use more specific prompts
+            - Contact support if issues persist
+            
+            Manual review has been requested.`;
+            
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,  
+              issue_number: context.issue.number,
+              body: comment
+            });
+            
+      - name: Success Metrics
+        if: steps.claude.outcome == 'success'
+        run: |
+          echo "✅ Claude analysis completed successfully"
+          echo "Response time: ${{ steps.claude.outputs.duration || 'N/A' }}"
+```
+
+---
+layout: default
+---
+
+# Performance Optimization ⚡
+
+## Efficient Workflow Configuration
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    claude_args: |
+      --max-turns 5
+      --model claude-3-5-sonnet-20241022  
+      --timeout 180
+      --allowed-tools read_file,create_file,edit_file
+    # Optimize for speed and cost
+```
+
+## Cost Management
+```yaml
+# Only run on important events
+on:
+  pull_request:
+    types: [opened]  # Not on every push
+  issues:
+    types: [opened]
+  schedule:
+    - cron: '0 9 * * 1'  # Weekly, not daily
+
+# Use conditional logic
+jobs:
+  claude:
+    if: |
+      contains(github.event.issue.body, '@claude') ||
+      contains(github.event.pull_request.body, '@claude') ||
+      contains(github.event.issue.labels.*.name, 'needs-ai-review')
+```
+
+## Performance Tips
+- **Specific prompts** reduce processing time
+- **Targeted file analysis** vs full codebase scans
+- **Appropriate max-turns** limits (3-10 typically)
+- **Schedule intensive tasks** during off-hours
 
 ---
 layout: fact
 ---
 
-# Claude's Development Superpowers
+# Claude Code Superpowers
 
 <div class="text-xl">
 
-🧠 **Context Awareness** - Understands entire codebase  
-⚡ **Speed** - Seconds instead of hours for analysis  
-🎯 **Precision** - Specific, actionable suggestions  
-🔄 **Iteration** - Continuous improvement  
-🛡️ **Reliability** - Consistent code quality  
+🧠 **Full Codebase Understanding** - Analyzes entire project context  
+⚡ **Instant Activation** - Simple @claude mentions trigger automation  
+🎯 **Configurable Behavior** - CLAUDE.md customization  
+🔄 **Multi-turn Conversations** - Complex problem solving  
+🛡️ **Built-in Security** - GitHub permissions & token management  
+📊 **Rich Integrations** - Works with existing tools & workflows  
 
 </div>
 
 <div class="text-center mt-8 text-lg">
-Not a tool - a team member!
+Professional AI automation without custom code
 </div>
 
 ---
@@ -495,8 +413,8 @@ class: text-center
 
 # 🎯 Next: Advanced Scenarios
 
-## What's possible with Claude Code?
+## What's possible with sophisticated Claude workflows?
 
 <div class="text-sm mt-8 opacity-75">
-From basics to advanced use cases
+From basic automation to enterprise-grade systems
 </div>

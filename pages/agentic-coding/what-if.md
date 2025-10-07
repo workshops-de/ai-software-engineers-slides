@@ -72,11 +72,13 @@ class PredictiveAgent {
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # What if agents become creative? 🎨
+
+::left::
 
 ## Code Creativity
 - **Invent new patterns**

@@ -140,11 +140,13 @@ jobs:
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # What if workflows communicate? 💬
+
+::left::
 
 ## Cross-Repository Orchestration
 

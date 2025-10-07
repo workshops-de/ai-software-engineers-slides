@@ -43,11 +43,13 @@ class AutonomousDevelopment {
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Scenario: AI Pair Programming 👥
+
+::left::
 
 ## Enhanced Collaboration
 ```typescript
@@ -197,11 +199,13 @@ jobs:
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Edge Case: Claude vs Claude 🤖⚖️🤖
+
+::left::
 
 ## Multi-Agent Code Review
 ```typescript

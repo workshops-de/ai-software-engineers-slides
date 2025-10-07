@@ -19,11 +19,13 @@ in software development through contextual understanding and agentic capabilitie
 - **Code Review Tools**: Rule-based, no contextual understanding
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Claude vs. Other AI Tools 🆚
+
+::left::
 
 ## 🤖 GitHub Copilot
 - **Strengths**: Fast code completion
@@ -184,11 +186,13 @@ layout: default
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Concrete Pain Points Claude Solves
+
+::left::
 
 ## 🔍 Understanding legacy code
 ```typescript

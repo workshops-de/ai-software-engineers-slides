@@ -96,11 +96,13 @@ jobs:
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Event-Driven Architecture 📡
+
+::left::
 
 ## GitHub Events
 ```yaml
@@ -318,11 +320,13 @@ jobs:
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Security & Secrets Management 🔐
+
+::left::
 
 ## Repository Secrets
 ```yaml
@@ -332,7 +336,7 @@ jobs:
     steps:
       - name: Configure Secrets
         env:
-          API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           DB_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
           DEPLOY_TOKEN: ${{ secrets.DEPLOYMENT_TOKEN }}
         run: |

@@ -20,11 +20,13 @@ agents to independently react to code changes and execute actions.
 - **Quality gates** are bypassed under time pressure
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Manual vs. Automated Workflows 🆚
+
+::left::
 
 ## 👨‍💻 Manual Process
 ```
@@ -274,11 +276,13 @@ layout: default
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # ROI of Workflow Automation 💰
+
+::left::
 
 ## Cost Calculation  
 ```typescript

@@ -187,11 +187,13 @@ jobs:
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Pattern 3: Smart Deployment Pipeline 🚀
+
+::left::
 
 ```yaml
 name: Smart Deploy

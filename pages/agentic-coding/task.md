@@ -5,7 +5,7 @@ class: text-center
 
 # 🎯 Workshop: Agentic Coding
 
-Hands-on implementation of your first agent
+No-code automation with Claude Code GitHub Actions
 
 ---
 layout: default
@@ -14,319 +14,375 @@ layout: default
 # Workshop: Build Your First Agent 🛠️
 
 ## Goal
-Create a **GitHub Action Agent** that automatically analyzes Pull Requests and provides feedback.
+Set up **Claude Code GitHub Actions** to automatically handle Pull Requests, issues, and code reviews with simple @claude mentions.
 
 <div class="mt-8 grid grid-cols-3 gap-4">
 <div class="p-4 bg-blue-100 rounded-lg">
-<strong>⏱️ Time:</strong> 45 minutes
+<strong>⏱️ Time:</strong> 30 minutes
 </div>
 <div class="p-4 bg-green-100 rounded-lg">
 <strong>🎯 Level:</strong> Beginner
 </div>
 <div class="p-4 bg-purple-100 rounded-lg">
-<strong>🛠️ Tools:</strong> GitHub, OpenAI API
+<strong>🛠️ Tools:</strong> GitHub, Claude Code
 </div>
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Step 1: Repository Setup
 
-## Create GitHub Repository
-1. New repository: `agentic-coding-workshop`
-2. Initialize with README
-3. Enable branch protection rules
-4. Create Pull Request template
+::left::
 
-```markdown
-<!-- .github/pull_request_template.md -->
-## Changes
-- [ ] Bug fix
-- [ ] New feature  
-- [ ] Breaking change
-- [ ] Documentation update
+## Create Test Repository
+1. Create new repository: `claude-automation-demo`
+2. Initialize with README and sample code
+3. Enable Issues and Pull Requests
+4. Add some basic project files
 
-## Testing
-- [ ] Unit tests added/updated
-- [ ] Integration tests pass
-- [ ] Manual testing completed
+```bash
+# Initialize repository structure
+mkdir src tests docs
+echo "# Claude Automation Demo" > README.md
 
-## Agent Review Requested 🤖
-@agent-reviewer please analyze this PR
+# Create sample code for Claude to work with
+cat > src/utils.js << 'EOF'
+function calculateTotal(items) {
+    return items.reduce((sum, item) => sum + item.price, 0);
+}
+
+function formatCurrency(amount) {
+    return '$' + amount.toFixed(2);
+}
+
+module.exports = { calculateTotal, formatCurrency };
+EOF
 ```
 
 ::right::
 
-## Configure Secrets
-1. Create OpenAI API Key
-2. Generate GitHub Token (with PR permissions)
-3. Store in Repository Secrets:
-   - `OPENAI_API_KEY`
-   - `GITHUB_TOKEN`
+## Configure Repository
+1. **Settings** → **Actions** → Enable workflows
+2. **Settings** → **Branches** → Add protection for `main`  
+3. **Settings** → **General** → Allow auto-merge
+4. **Issues** → Create issue template (optional)
 
-<div class="mt-4 p-4 bg-yellow-100 rounded-lg text-sm">
-<strong>Tip:</strong> GitHub Actions already have GITHUB_TOKEN available
-</div>
+```markdown
+<!-- .github/ISSUE_TEMPLATE/bug_report.md -->
+**Bug Description:**
+Brief description of the issue
+
+**Steps to Reproduce:**
+1. Step one
+2. Step two
+
+**Expected vs Actual:**
+What should happen vs what actually happens
+
+@claude Please analyze and fix this issue
+```
 
 ---
 layout: default
 ---
 
-# Step 2: Create GitHub Action 
+# Step 2: Install Claude Code 
+
+## Quick Installation with Claude CLI
+
+```bash
+# In your Claude Code terminal
+/install-github-app
+
+# Follow the prompts:
+# 1. Select your repository
+# 2. Install Claude GitHub App
+# 3. Configure API key secret
+# 4. Create workflow file
+```
+
+## Manual Setup Alternative
+
+If CLI install doesn't work:
+
+1. **Install Claude GitHub App**: Visit https://github.com/apps/claude
+2. **Add API Secret**: Settings → Secrets → `ANTHROPIC_API_KEY` 
+3. **Create workflow file**:
 
 ```yaml
-# .github/workflows/agent-review.yml
-name: PR Agent Review
-on: 
+# .github/workflows/claude.yml
+name: Claude Code
+on:
+  issue_comment:
+    types: [created]
+  pull_request_review_comment:
+    types: [created]
+jobs:
+  claude:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+```
+
+---
+layout: default
+---
+
+# Step 3: Configure Claude's Behavior
+
+## Create CLAUDE.md Configuration
+
+```markdown
+<!-- CLAUDE.md -->
+# Claude Configuration for Development
+
+## Project Context
+This is a JavaScript utility library for e-commerce calculations.
+
+## Coding Standards
+- Use ES6+ features where appropriate
+- Include JSDoc comments for all functions
+- Follow naming conventions: camelCase for functions/variables
+- Add error handling for edge cases
+
+## Testing Requirements
+- Write Jest tests for all new functions
+- Achieve minimum 80% code coverage
+- Include both positive and negative test cases
+- Test edge cases (empty arrays, null values, etc.)
+
+## Code Review Guidelines
+- Check for security vulnerabilities
+- Verify performance implications
+- Ensure backward compatibility
+- Validate error handling
+
+## Auto-fix Permissions
+- Fix linting errors automatically
+- Update outdated dependencies (patch versions only)
+- Format code according to Prettier config
+- Generate missing JSDoc comments
+
+## Communication Style
+- Be concise but thorough in PR comments
+- Explain reasoning behind suggestions
+- Provide code examples when helpful
+- Use emojis sparingly but effectively
+```
+
+---
+layout: default
+---
+
+# Step 4: Test Basic Automation 🧪
+
+## Test 1: Issue Analysis
+Create a new issue:
+
+```markdown
+**Title:** Bug: calculateTotal function doesn't handle empty arrays
+
+**Description:** 
+The calculateTotal function crashes when passed an empty array.
+It should return 0 instead of throwing an error.
+
+Steps to reproduce:
+1. Call calculateTotal([])
+2. Function throws TypeError
+
+@claude Please analyze this issue and create a fix
+```
+
+## Test 2: Code Review  
+Create a simple PR:
+
+1. Create new branch: `feature/add-validation`
+2. Make a small change to `src/utils.js`
+3. Create PR with description: "@claude Please review this change"
+
+## Test 3: Manual Trigger
+Comment on any issue or PR:
+```
+@claude Generate comprehensive tests for the utils.js file
+```
+
+---
+layout: default
+---
+
+# Step 5: Advanced Workflow Setup 📈
+
+## Multi-Stage Automation
+
+```yaml
+name: Advanced Claude Workflow
+on:
+  issues:
+    types: [opened, labeled]
   pull_request:
-    types: [opened, synchronize, reopened]
+    types: [opened, synchronize]
 
 jobs:
-  agent-review:
+  issue-triage:
+    if: github.event_name == 'issues'
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-      
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
+      - uses: anthropics/claude-code-action@v1
         with:
-          fetch-depth: 0
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Analyze this issue and:
+            1. Classify as bug/feature/question
+            2. Estimate complexity (1-5 scale)  
+            3. Suggest appropriate labels
+            4. Create implementation plan if it's a feature
+          claude_args: "--max-turns 3"
           
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+  pr-review:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
         with:
-          node-version: '20'
-          
-      - name: Install dependencies
-        run: npm install openai @octokit/rest
-        
-      - name: Run Agent Review
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          PR_NUMBER: ${{ github.event.pull_request.number }}
-        run: node .github/scripts/agent-review.js
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Review this PR focusing on:
+            - Code quality and best practices
+            - Security implications
+            - Performance considerations
+            - Test coverage adequacy
+          claude_args: "--max-turns 5"
 ```
 
 ---
 layout: default
 ---
 
-# Step 3: Implement Agent Script
-
-```javascript
-// .github/scripts/agent-review.js
-const { OpenAI } = require('openai');
-const { Octokit } = require('@octokit/rest');
-const { execSync } = require('child_process');
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-});
-
-const octokit = new Octokit({
-  auth: process.env.GITHUB_TOKEN
-});
-
-async function main() {
-  try {
-    console.log('🤖 Agent starting PR analysis...');
-    
-    // Get PR details
-    const { data: pr } = await octokit.rest.pulls.get({
-      owner: process.env.GITHUB_REPOSITORY.split('/')[0],
-      repo: process.env.GITHUB_REPOSITORY.split('/')[1], 
-      pull_number: process.env.PR_NUMBER
-    });
-    
-    // Get diff
-    const diff = execSync('git diff origin/main...HEAD').toString();
-    
-    console.log('📊 Analyzing changes with AI...');
-    await analyzeWithAI(pr, diff);
-    
-  } catch (error) {
-    console.error('❌ Agent failed:', error);
-    process.exit(1);
-  }
-}
-```
-
----
-layout: default
----
-
-# Step 4: AI Analysis Logic 🧠
-
-```javascript
-async function analyzeWithAI(pr, diff) {
-  const prompt = `You are a Senior Software Engineer reviewing a Pull Request.
-
-PR Details:
-Title: ${pr.title}
-Description: ${pr.body || 'No description provided'}
-
-Code Changes:
-${diff}
-
-Please provide a comprehensive review focusing on:
-1. Code quality and best practices
-2. Potential bugs or issues
-3. Performance considerations  
-4. Security implications
-5. Testing recommendations
-
-Format your response as constructive feedback with specific suggestions.`;
-
-  const completion = await openai.chat.completions.create({
-    model: "gpt-4",
-    messages: [{ role: "user", content: prompt }],
-    max_tokens: 1000,
-    temperature: 0.1
-  });
-
-  const review = completion.choices[0].message.content;
-  
-  // Post comment on PR
-  await octokit.rest.issues.createComment({
-    owner: process.env.GITHUB_REPOSITORY.split('/')[0],
-    repo: process.env.GITHUB_REPOSITORY.split('/')[1],
-    issue_number: process.env.PR_NUMBER,
-    body: `## 🤖 Agent Code Review\n\n${review}\n\n---\n*Review generated by Agentic Coding Agent*`
-  });
-  
-  console.log('✅ Review posted successfully!');
-}
-```
-
----
-layout: default
----
-
-# Step 5: Testing & Iteration 🔄
-
-## Create Test Scenarios
-
-1. **Simple Change**: README update → Agent should provide minimal feedback
-2. **Bug Fix**: Code change with test → Agent checks test coverage  
-3. **New Feature**: New function → Agent should request documentation
-4. **Security Issue**: Potentially unsafe code → Agent warns
-
-```javascript
-// Enhanced agent logic for different scenarios
-function analyzeChangeType(diff) {
-  const patterns = {
-    documentation: /\.(md|txt|rst)$/,
-    tests: /\.(test|spec)\.(js|ts|py)$/,
-    config: /\.(json|yaml|yml|toml)$/,
-    security: /(password|secret|token|key)/i
-  };
-  
-  // Intelligent analysis based on file types
-  return Object.entries(patterns).filter(([type, regex]) => 
-    regex.test(diff)
-  ).map(([type]) => type);
-}
-```
-
----
-layout: default
----
-
-# Step 6: Agent Enhancement 📈
+# Step 6: Specialized Prompts & Use Cases 🎯
 
 <div class="grid grid-cols-2 gap-8">
 <div>
 
-## Extended Features
-- **Severity Scoring**: 1-10 for issues
-- **Auto-Labeling**: PR labels based on analysis  
-- **Change Estimation**: Effort estimation
-- **Regression Risk**: Risk assessment
-
-```javascript
-async function enhancedAnalysis(pr, diff) {
-  const analysis = await aiAnalyze(pr, diff);
-  
-  return {
-    severity: calculateSeverity(analysis),
-    labels: suggestLabels(analysis),
-    estimate: estimateEffort(diff),
-    riskScore: assessRisk(diff)
-  };
-}
+## Security-Focused Review
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    prompt: |
+      SECURITY REVIEW: Analyze for:
+      - Input validation vulnerabilities
+      - SQL injection possibilities
+      - XSS attack vectors
+      - Authentication bypasses
+      - Data exposure risks
+      
+      Rate security level 1-10 and provide fixes.
 ```
 
 </div>
 <div>
 
-## Integration Options
-- **Slack Notifications**: For critical issues
-- **Jira Integration**: Automatic tickets
-- **Code Quality Gates**: Block on high risk
-- **Metrics Dashboard**: Agent performance
+## Documentation Generator
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    prompt: |
+      Generate comprehensive documentation:
+      - API reference for all public functions
+      - Usage examples with code samples
+      - Installation and setup instructions
+      - Contributing guidelines
+      - Update README.md accordingly
+```
 
 </div>
 </div>
+
+## Scheduled Maintenance
+```yaml
+on:
+  schedule:
+    - cron: "0 6 * * 1"  # Every Monday at 6 AM
+jobs:
+  weekly-maintenance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Weekly maintenance check:
+            1. Review open issues and PRs
+            2. Check for outdated dependencies
+            3. Run security audit
+            4. Generate status report
+            5. Create maintenance tasks if needed
+```
 
 ---
 layout: default
 ---
 
-# Bonus: Multi-Agent Collaboration 🤝
+# Validation & Results 📊
 
-```javascript
-// Specialized agents for different areas
-class SecurityAgent {
-  async review(diff) {
-    const prompt = `Focus only on security vulnerabilities in this code: ${diff}`;
-    return await this.analyze(prompt);
-  }
-}
+## Success Criteria ✅
 
-class PerformanceAgent {
-  async review(diff) {
-    const prompt = `Analyze performance implications: ${diff}`;
-    return await this.analyze(prompt);
-  }
-}
+After completing the workshop, you should have:
 
-// Orchestrator combines all agent reviews
-class ReviewOrchestrator {
-  async conductReview(pr, diff) {
-    const [security, performance, quality] = await Promise.all([
-      this.securityAgent.review(diff),
-      this.performanceAgent.review(diff), 
-      this.qualityAgent.review(diff)
-    ]);
-    
-    return this.synthesizeReviews([security, performance, quality]);
-  }
-}
-```
+- [ ] **Claude GitHub App** installed and configured
+- [ ] **Basic workflow** responding to @claude mentions  
+- [ ] **CLAUDE.md** configuration customizing behavior
+- [ ] **Test issue** automatically analyzed and fixed
+- [ ] **Test PR** automatically reviewed with feedback
+- [ ] **Advanced workflow** for different event types
+
+## Expected Outcomes
+
+<div class="grid grid-cols-2 gap-8">
+<div>
+
+### Immediate Benefits
+- **Instant code reviews** on every PR
+- **Automatic issue analysis** and solutions
+- **Zero custom code** to maintain
+- **Consistent quality** across all changes
+
+</div>
+<div>
+
+### Advanced Capabilities  
+- **Proactive maintenance** via scheduled runs
+- **Security scanning** on every change
+- **Documentation generation** automatically
+- **Multi-stage approval** workflows
+
+</div>
+</div>
 
 ---
 layout: fact
 ---
 
-# 🎯 Success Metrics
+# 🎯 Achievement Unlocked!
 
 <div class="text-xl">
 
-**✅ Works**: Agent comments on PRs automatically  
-**📊 Measurable**: Review time reduced from 2h to 15min  
-**🎯 Relevant**: Findings are actionable  
-**🔄 Iterative**: Agent learns from feedback  
+✅ **No-Code Agent**: Built without writing custom code  
+✅ **Event-Driven**: Responds to GitHub events automatically  
+✅ **Customizable**: Behavior configured via CLAUDE.md  
+✅ **Scalable**: Works for any repository size  
+✅ **Secure**: Uses GitHub's built-in permissions  
 
 </div>
 
 <div class="text-center mt-8 p-4 bg-green-100 rounded-lg">
-<strong>Result:</strong> Your first productive agent is live! 🚀
+<strong>Result:</strong> Professional AI automation in 30 minutes! 🚀
 </div>
 
 ---
@@ -334,12 +390,12 @@ layout: center
 class: text-center
 ---
 
-# 🎉 Done!
+# 🎉 Your First Agent is Live!
 
-## Your first Agentic Coding Agent is running
+## Ready to explore Claude Code's advanced features?
 
-### Next Step: Claude Code as a professional tool
+### Next Step: Deep dive into Claude Code capabilities
 
 <div class="text-sm mt-8 opacity-75">
-Ready for the next level?
+From basic automation to sophisticated workflows
 </div>

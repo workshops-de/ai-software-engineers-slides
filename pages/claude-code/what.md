@@ -50,11 +50,13 @@ integrated components.
 </div>
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Claude's Core Capabilities 💪
+
+::left::
 
 ## Language Understanding
 - **Natural Language → Code** Translation
@@ -211,11 +213,13 @@ graph TD
 ```
 
 ---
-layout: two-cols
+layout: two-cols-header
 layoutClass: gap-16
 ---
 
 # Prompt Engineering in Claude 🎯
+
+::left::
 
 ## System Prompts
 ```typescript
