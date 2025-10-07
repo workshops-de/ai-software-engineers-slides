@@ -18,157 +18,33 @@ mdc: true
 ---
 
 ---
-src: ./pages/why-software-engineers-need-ai/why.md
+src: ./pages/why-software-engineers-need-ai/_index.md
 ---
 
 ---
-src: ./pages/llm-introduction/why.md
+src: ./pages/llm-introduction/_index.md
 ---
 
 ---
-src: ./pages/llm-introduction/what.md
+src: ./pages/prompt-engineering/_index.md
 ---
 
 ---
-src: ./pages/llm-introduction/how.md
+src: ./pages/rule-instruction-files/_index.md
 ---
 
 ---
-src: ./pages/llm-introduction/what-if.md
+src: ./pages/model-context-protocol/_index.md
 ---
 
 ---
-src: ./pages/llm-introduction/task.md
+src: ./pages/agentic-coding/_index.md
 ---
 
 ---
-src: ./pages/prompt-engineering/why.md
+src: ./pages/claude-code/_index.md
 ---
 
 ---
-src: ./pages/prompt-engineering/what.md
----
-
----
-src: ./pages/prompt-engineering/how.md
----
-
----
-src: ./pages/prompt-engineering/what-if.md
----
-
----
-src: ./pages/rule-instruction-files/why.md
----
-
----
-src: ./pages/rule-instruction-files/what.md
----
-
----
-src: ./pages/rule-instruction-files/how.md
----
-
----
-src: ./pages/rule-instruction-files/what-if.md
----
-
----
-src: ./pages/model-context-protocol/why.md
----
-
----
-src: ./pages/model-context-protocol/what.md
----
-
----
-src: ./pages/model-context-protocol/how.md
----
-
----
-src: ./pages/model-context-protocol/what-if.md
----
-
----
-src: ./pages/agentic-coding/title.md
----
-
----
-src: ./pages/agentic-coding/little-what.md
----
-
----
-src: ./pages/agentic-coding/why.md
----
-
----
-src: ./pages/agentic-coding/what.md
----
-
----
-src: ./pages/agentic-coding/how.md
----
-
----
-src: ./pages/agentic-coding/what-if.md
----
-
----
-src: ./pages/agentic-coding/task.md
----
-
----
-src: ./pages/claude-code/title.md
----
-
----
-src: ./pages/claude-code/little-what.md
----
-
----
-src: ./pages/claude-code/why.md
----
-
----
-src: ./pages/claude-code/what.md
----
-
----
-src: ./pages/claude-code/how.md
----
-
----
-src: ./pages/claude-code/what-if.md
----
-
----
-src: ./pages/claude-code/task.md
----
-
----
-src: ./pages/github-workflows/title.md
----
-
----
-src: ./pages/github-workflows/little-what.md
----
-
----
-src: ./pages/github-workflows/why.md
----
-
----
-src: ./pages/github-workflows/what.md
----
-
----
-src: ./pages/github-workflows/how.md
----
-
----
-src: ./pages/github-workflows/what-if.md
----
-
----
-src: ./pages/github-workflows/task.md
+src: ./pages/github-workflows/_index.md
 ---
