@@ -24,7 +24,7 @@ layout: default
 </div>
 <div>
 
-## 🔧 Integration Layer  
+## 🔧 Integration Layer
 - **GitHub API**: Repository access
 - **Webhooks**: Real-time events
 - **PR/Issue comments**: Communication
@@ -53,7 +53,7 @@ layoutClass: gap-16
 
 ## Issue → @claude → Solution
 
-```yaml
+```yaml {*}{maxHeight:'200px'}
 name: Claude Code
 on:
   issue_comment:
@@ -114,7 +114,7 @@ jobs:
 
 ## Proactive Agent Benefits
 - **Daily code health checks**
-- **Automated security scanning**  
+- **Automated security scanning**
 - **Documentation updates**
 - **Dependency maintenance**
 - **Performance monitoring**
@@ -126,9 +126,11 @@ layoutClass: gap-16
 
 # Pattern 3: Multi-Stage Workflows 🤝
 
-::left::
-
-```yaml
+```yaml {*}{maxHeight:'450px'}
+name: Feature Development Pipeline
+on:
+  issues:
+    types: [opened, labeled]
 
 jobs:
   analyze-requirement:
@@ -139,7 +141,7 @@ jobs:
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           prompt: "Analyze feature request and create implementation plan"
-          
+
   implement-feature:
     needs: analyze-requirement
     runs-on: ubuntu-latest
@@ -152,48 +154,89 @@ jobs:
 
 ::right::
 
-**Multi-stage benefits**: Analysis → Planning → Implementation → Review
+**Step 4: Configure Claude's Behavior**
+```markdown
+<!-- CLAUDE.md -->
+# Claude Configuration
+
+## Coding Standards
+- Use TypeScript for all new code
+- Follow ESLint configuration
+- Write tests for new functions
+- Update documentation
+
+## Review Criteria
+- Security: Check for vulnerabilities
+- Performance: Identify bottlenecks
+- Maintainability: Ensure clean code
+- Testing: Verify test coverage
+
+## Auto-fix Guidelines
+- Fix lint errors automatically
+- Update dependencies safely
+- Regenerate documentation
+- Create meaningful commit messages
+```
 
 ---
 layout: default
 ---
 
+# Advanced Claude Prompting 🎯
+
+## Effective Workflow Prompts
+
+```yaml
+- uses: anthropics/claude-code-action@v1
+  with:
+    anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+    prompt: |
+      ROLE: Senior Full-Stack Engineer
+
+      CONTEXT: This is a React/Node.js e-commerce application
+
+      TASK: Review this PR for:
+      1. Security vulnerabilities
+      2. Performance implications
+      3. Code quality issues
+      4. Test coverage gaps
+
+      CONSTRAINTS:
+      - Follow our CLAUDE.md guidelines
+      - Ensure backward compatibility
+      - Maintain existing API contracts
+
+      OUTPUT: Detailed review comments with specific suggestions
+    claude_args: "--max-turns 5 --model claude-3-5-sonnet-20241022"
+```
+
+---
+layout: two-cols-header
+layoutClass: gap-8
+---
+
 # Trigger Patterns 🎛️
 
-<div class="grid grid-cols-3 gap-4">
-<div class="p-4 bg-blue-50 rounded-lg">
+::left::
 
-### Issue-Based 
+**Issue-Based Automation**
 ```yaml
 on:
   issues:
     types: [opened, labeled]
 ```
 
-**Triggers**: @claude mentions, labels
-
-**Use for**: Bug reports, feature requests, questions  
-**Agent action**: Analyze, classify, plan, potentially auto-implement
-
-</div>
-<div class="p-4 bg-green-50 rounded-lg">
-
-### PR-Based
-```yaml
+**PR-Based Reviews**
+```yaml {*}{maxHeight:'120px'}
 on:
   pull_request:
     types: [opened, synchronize]
 ```
 
-**Triggers**: New PRs, code changes
+::right::
 
-**Use for**: Code reviews, quality checks, security scans  
-**Agent action**: Review code, suggest improvements, approve/block
+**Manual Triggers**
 
-</div>
-<div class="p-4 bg-purple-50 rounded-lg">
-
-### Manual
 ```yaml
 on:
   workflow_dispatch:
@@ -203,7 +246,7 @@ on:
 
 **Triggers**: On-demand execution
 
-**Use for**: Maintenance, optimization, documentation updates  
+**Use for**: Maintenance, optimization, documentation updates
 **Agent action**: Perform specific tasks based on user selection
 
 </div>
@@ -215,18 +258,60 @@ layout: default
 
 # Error Handling & Fallbacks 🛡️
 
-```yaml
-steps:
-  - name: Claude Analysis
-    id: claude
-    continue-on-error: true
-    uses: anthropics/claude-code-action@v1
-    with:
-      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-      
-  - name: Fallback Notification
-    if: failure()
-    run: echo "⚠️ Claude failed. Manual review requested."
+```yaml {*}{maxHeight:'450px'}
+jobs:
+  claude-with-fallback:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Try Claude Analysis
+        id: claude
+        continue-on-error: true
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_args: "--max-turns 3"
+
+      - name: Fallback to Manual Review
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: '⚠️ Claude analysis failed. Manual review requested.'
+            })
+
+      - name: Success Notification
+        if: success()
+        run: echo "✅ Claude analysis completed successfully"
 ```
 
-**Key principles**: Graceful failures, fallback notifications, continue-on-error
+---
+layout: default
+---
+
+# 🎯 Quick Win: First Agent in 5 minutes
+
+1. **Install Claude App** via `/install-github-app` (2 min)
+2. **Add API Key** to repository secrets (1 min)
+3. **Create basic workflow** file (1 min)
+4. **Test with @claude** mention in an issue (1 min)
+
+<div class="mt-8 p-4 bg-blue-100 rounded-lg text-center">
+<strong>Result:</strong> Instant AI automation with zero custom code!
+</div>
+
+---
+layout: center
+class: text-center
+---
+
+# 🚀 Ready for Claude Code Specifics?
+
+## Now let's dive deep into Claude Code features
+
+<div class="text-sm mt-8 opacity-75">
+From basic patterns to advanced workflows
+</div>

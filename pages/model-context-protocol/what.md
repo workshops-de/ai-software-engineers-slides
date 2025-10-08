@@ -53,6 +53,7 @@ Browse http://site.org and summarise its contents
 - Simple setup—see [mcp.so](https://mcp.so) for guides and ready-to-use servers
 - Scale from local development to cloud-based workflows
 
+TODO: Add remote/local mcp for more clarity
 
 ---
 layout: default
