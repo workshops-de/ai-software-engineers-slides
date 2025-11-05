@@ -686,24 +686,11 @@ Each parameter is a learned weight in the neural network
 </div>
 
 ---
-layout: default
+layout: image-right
+image: pages/llm-introduction/transformer-explainer.png
 ---
 
-# 🏗️ The Complete Pipeline
 
-```mermaid {scale:0.5}
-graph TD
-    A[Input Text] --> B[Tokenization]
-    B --> C[Embeddings]
-    C --> D[Self-Attention Layers]
-    D --> E[Feed-Forward Networks]
-    E --> F[More Attention Layers]
-    F --> G[Output Probabilities]
-    G --> H[Sample Next Token]
-    H --> I[Generated Text]
-    H --> |Repeat| B
-```
+# Interactive Transformer Explainer
 
-<div class="mt-6 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-4 rounded-lg">
-💡 <strong>Key Insight:</strong> This entire process runs for EVERY single token generated
-</div>
+https://poloclub.github.io/transformer-explainer/

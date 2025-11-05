@@ -249,8 +249,6 @@ on:
 **Use for**: Maintenance, optimization, documentation updates
 **Agent action**: Perform specific tasks based on user selection
 
-</div>
-</div>
 
 ---
 layout: default

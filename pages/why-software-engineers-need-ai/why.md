@@ -150,40 +150,6 @@ layout: center
 </div>
 
 ---
-layout: two-cols
----
-
-# New Opportunities Emerging
-
-- **AI Integration Specialist**
-  - Bridge between AI and existing systems
-  - $150k+ average salary
-
-- **Prompt Engineering**
-  - Craft effective AI interactions
-  - New skill, high demand
-
-- **AI-Assisted Architecture**
-  - Design systems with AI components
-  - Senior roles expanding
-
-::right::
-
-# Skills That Matter More
-
-- **Critical thinking**
-  - AI can generate, you must evaluate
-
-- **Ethical considerations**
-  - Understanding bias and limitations
-
-- **Business acumen**
-  - Translating needs to technical solutions
-
-- **Human collaboration**
-  - Leading teams with AI tools
-
----
 layout: quote
 ---
 
