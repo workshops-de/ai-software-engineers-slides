@@ -76,7 +76,6 @@ layout: two-cols
 # Common File Types
 
 **Project Rules:**
-
 - Overall architecture guidance
 - Technology stack constraints
 - Naming conventions
@@ -84,7 +83,6 @@ layout: two-cols
 - Security requirements
 
 **Feature Rules:**
-
 - Component standards
 - Module-specific patterns
 - Feature implementation guides
@@ -93,14 +91,12 @@ layout: two-cols
 ::right::
 
 **Workflow Rules:**
-
 - PR creation standards
 - Code review templates
 - Documentation requirements
 - Release procedures
 
 **AI Behavior Rules:**
-
 - Response format preferences
 - Verbosity settings
 - Code generation constraints
@@ -166,7 +162,6 @@ layout: default
 ---
 
 # Best practices
-
 ## Good rules are focused, actionable, and scoped.
 
 - Keep rules under **500** lines

@@ -6,7 +6,7 @@ layout: default
 
 <div class="text-lg mb-8">
 
-**GitHub Workflows** are automated processes that run based on events in your repository.
+**GitHub Workflows** are automated processes that run based on events in your repository. 
 They are the **backbone** of agentic development systems.
 
 </div>
@@ -17,7 +17,6 @@ They are the **backbone** of agentic development systems.
 <div class="p-4 bg-blue-50 rounded-lg">
 
 ### 🎯 Events
-
 - push, pull_request
 - issues, schedule
 - workflow_dispatch
@@ -27,7 +26,6 @@ They are the **backbone** of agentic development systems.
 <div class="p-4 bg-green-50 rounded-lg">
 
 ### 🔄 Jobs
-
 - Sequential or parallel
 - Different runners
 - Conditional execution
@@ -37,7 +35,6 @@ They are the **backbone** of agentic development systems.
 <div class="p-4 bg-purple-50 rounded-lg">
 
 ### ⚡ Actions
-
 - Reusable components
 - Marketplace ecosystem
 - Custom actions
@@ -45,6 +42,7 @@ They are the **backbone** of agentic development systems.
 
 </div>
 </div>
+
 
 ---
 layout: fact
@@ -57,7 +55,7 @@ layout: fact
 **40,000+** actions in marketplace  
 **5 million+** repositories using Actions  
 **500 million+** workflow runs per month  
-**99.9%** uptime SLA
+**99.9%** uptime SLA  
 
 </div>
 

@@ -3,7 +3,6 @@ layout: cover
 ---
 
 # How to Create Rule & Instruction Files
-
 ## Practical implementation for coding agents
 
 ---
@@ -34,27 +33,24 @@ layoutClass: gap-6
 # Project Rules
 
 ## Coding Standards
-
 - Use TypeScript for all new files
 - Follow camelCase for variables and methods
 - Use PascalCase for classes and interfaces
 - Maximum line length: 100 characters
 
 ## Architecture
-
 - Implement feature-based directory structure
 - Follow SOLID principles
 - Use dependency injection
 
 ## Component Pattern
-
 interface ComponentProps {
-title: string;
-onAction: () => void;
+  title: string;
+  onAction: () => void;
 }
 
 export function ExampleComponent({ title, onAction }: ComponentProps) {
-// Implementation
+  // Implementation
 }
 ```
 
@@ -149,12 +145,10 @@ layout: default
 # Project Rules
 
 ## Purpose
-
 These rules guide AI coding assistants to maintain consistency
 and follow our team's best practices across the codebase.
 
 ## Code Style
-
 - Use TypeScript for all new files
 - Follow camelCase for variables and methods
 - Use PascalCase for classes and interfaces
@@ -162,7 +156,6 @@ and follow our team's best practices across the codebase.
 - Use 2-space indentation
 
 ## Architecture
-
 - Organize code by feature, not by type
 - Follow SOLID principles
 - Use functional components with hooks for React
@@ -177,14 +170,12 @@ layout: two-cols
 # Common Sections to Include
 
 **Project Context:**
-
 - Purpose and goals
 - Tech stack overview
 - Architectural patterns
 - Domain terminology
 
 **Code Standards:**
-
 - Style conventions
 - Documentation requirements
 - Testing expectations
@@ -193,14 +184,12 @@ layout: two-cols
 ::right::
 
 **Workflow Guidelines:**
-
 - Git commit standards
 - PR process instructions
 - Review criteria
 - Release procedures
 
 **AI-Specific Instructions:**
-
 - Response format preferences
 - Error handling expectations
 - Level of explanation needed

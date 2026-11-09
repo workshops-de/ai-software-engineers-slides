@@ -16,7 +16,6 @@ layout: default
 <div>
 
 ## Adaptive Agents
-
 - **Pattern Recognition**: Learning from code history
 - **Team Preferences**: Adapting to coding style
 - **Domain Knowledge**: Gathering business context
@@ -36,7 +35,6 @@ class LearningAgent {
 <div>
 
 ## Emergent Behavior
-
 - Agents develop **their own strategies**
 - **Collaboration** without explicit programming
 - **Creative solution approaches** emerge
@@ -83,7 +81,6 @@ layoutClass: gap-16
 ::left::
 
 ## Code Creativity
-
 - **Invent new patterns**
 - **Discover optimal algorithms**
 - **Propose innovative architectures**
@@ -96,7 +93,7 @@ class CreativeAgent {
     const approaches = [
       () => this.traditionalSolution(problem),
       () => this.functionalApproach(problem),
-      () => this.experimentalPattern(problem),
+      () => this.experimentalPattern(problem)
     ];
 
     return await this.findBestSolution(approaches);
@@ -107,7 +104,6 @@ class CreativeAgent {
 ::right::
 
 ## Multi-Domain Expertise
-
 - **Cross-pollination** between technologies
 - **Best practices** from various domains
 - **Hybrid solutions** with unexpected combinations
@@ -129,7 +125,9 @@ class AgentCommunication {
   async consultPeers(problem) {
     const experts = await this.findExpertAgents(problem.domain);
 
-    const consultations = await Promise.all(experts.map((expert) => expert.advise(problem)));
+    const consultations = await Promise.all(
+      experts.map(expert => expert.advise(problem))
+    );
 
     const consensus = await this.negotiateConsensus(consultations);
     return this.synthesizeApproach(consensus);
@@ -138,7 +136,6 @@ class AgentCommunication {
 ```
 
 ## Collective Intelligence
-
 - **Swarm intelligence** for complex problems
 - **Decentralized decision-making**
 - **Knowledge sharing** between agent instances
@@ -179,7 +176,6 @@ layout: default
 <div>
 
 ## Technical Challenges
-
 - **Hallucinations** with complex problems
 - **Context windows** with large codebases
 - **API rate limits** with intensive usage
@@ -202,7 +198,6 @@ class ValidationAgent {
 <div>
 
 ## Ethical & Social
-
 - **Job displacement** - What happens to junior devs?
 - **Code ownership** - Who is responsible?
 - **Skill atrophy** - Do we lose coding skills?
@@ -242,6 +237,7 @@ class AgentIDE {
 <strong>Vision:</strong> IDE becomes a team of expert agents
 </div>
 
+---
 ---
 
 # Extreme Scenarios 🌟

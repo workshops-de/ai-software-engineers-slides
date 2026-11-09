@@ -14,7 +14,6 @@ layout: default
 # Task: Self-Healing CI-Pipeline 🏥
 
 ## Objective
-
 Create an autonomous system that monitors, diagnoses, and fixes CI/CD pipeline issues automatically, ensuring continuous delivery reliability without manual intervention.
 
 <div class="mt-8 grid grid-cols-4 gap-4">

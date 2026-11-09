@@ -89,7 +89,6 @@ layout: fact
 ---
 
 # 2-3x
-
 ## Productivity gains for developers using AI effectively
 
 <div class="text-xl text-gray-600 mt-8">

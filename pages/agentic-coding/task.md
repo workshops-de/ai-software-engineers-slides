@@ -14,7 +14,6 @@ layout: default
 # Workshop: Build Your First Agent 🛠️
 
 ## Goal
-
 Set up **Claude Code GitHub Actions** to automatically handle Pull Requests, issues, and code reviews with simple @claude mentions.
 
 <div class="mt-8 grid grid-cols-3 gap-4">
@@ -39,7 +38,6 @@ layoutClass: gap-16
 ::left::
 
 ## Create Test Repository
-
 1. Create new repository: `claude-automation-demo`
 2. Initialize with README and sample code
 3. Enable Issues and Pull Requests
@@ -67,20 +65,17 @@ EOF
 ::right::
 
 ## Configure Repository
-
 1. **Settings** → **Actions** → Enable workflows
-2. **Settings** → **Branches** → Add protection for `main`
+2. **Settings** → **Branches** → Add protection for `main`  
 3. **Settings** → **General** → Allow auto-merge
 4. **Issues** → Create issue template (optional)
 
 ```markdown
 <!-- .github/ISSUE_TEMPLATE/bug_report.md -->
-
 **Bug Description:**
 Brief description of the issue
 
 **Steps to Reproduce:**
-
 1. Step one
 2. Step two
 
@@ -94,7 +89,7 @@ What should happen vs what actually happens
 layout: default
 ---
 
-# Step 2: Install Claude Code
+# Step 2: Install Claude Code 
 
 ## Quick Installation with Claude CLI
 
@@ -114,7 +109,7 @@ layout: default
 If CLI install doesn't work:
 
 1. **Install Claude GitHub App**: Visit https://github.com/apps/claude
-2. **Add API Secret**: Settings → Secrets → `ANTHROPIC_API_KEY`
+2. **Add API Secret**: Settings → Secrets → `ANTHROPIC_API_KEY` 
 3. **Create workflow file**:
 
 ```yaml
@@ -144,43 +139,36 @@ layout: default
 
 ```markdown
 <!-- CLAUDE.md -->
-
 # Claude Configuration for Development
 
 ## Project Context
-
 This is a JavaScript utility library for e-commerce calculations.
 
 ## Coding Standards
-
 - Use ES6+ features where appropriate
 - Include JSDoc comments for all functions
 - Follow naming conventions: camelCase for functions/variables
 - Add error handling for edge cases
 
 ## Testing Requirements
-
 - Write Jest tests for all new functions
 - Achieve minimum 80% code coverage
 - Include both positive and negative test cases
 - Test edge cases (empty arrays, null values, etc.)
 
 ## Code Review Guidelines
-
 - Check for security vulnerabilities
 - Verify performance implications
 - Ensure backward compatibility
 - Validate error handling
 
 ## Auto-fix Permissions
-
 - Fix linting errors automatically
 - Update outdated dependencies (patch versions only)
 - Format code according to Prettier config
 - Generate missing JSDoc comments
 
 ## Communication Style
-
 - Be concise but thorough in PR comments
 - Explain reasoning behind suggestions
 - Provide code examples when helpful
@@ -194,26 +182,23 @@ layout: default
 # Step 4: Test Basic Automation 🧪
 
 ## Test 1: Issue Analysis
-
 Create a new issue:
 
 ```markdown
 **Title:** Bug: calculateTotal function doesn't handle empty arrays
 
-**Description:**
+**Description:** 
 The calculateTotal function crashes when passed an empty array.
 It should return 0 instead of throwing an error.
 
 Steps to reproduce:
-
 1. Call calculateTotal([])
 2. Function throws TypeError
 
 @claude Please analyze this issue and create a fix
 ```
 
-## Test 2: Code Review
-
+## Test 2: Code Review  
 Create a simple PR:
 
 1. Create new branch: `feature/add-validation`
@@ -221,9 +206,7 @@ Create a simple PR:
 3. Create PR with description: "@claude Please review this change"
 
 ## Test 3: Manual Trigger
-
 Comment on any issue or PR:
-
 ```
 @claude Generate comprehensive tests for the utils.js file
 ```
@@ -258,8 +241,8 @@ jobs:
             2. Estimate complexity (1-5 scale)  
             3. Suggest appropriate labels
             4. Create implementation plan if it's a feature
-          claude_args: '--max-turns 3'
-
+          claude_args: "--max-turns 3"
+          
   pr-review:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
@@ -273,7 +256,7 @@ jobs:
             - Security implications
             - Performance considerations
             - Test coverage adequacy
-          claude_args: '--max-turns 5'
+          claude_args: "--max-turns 5"
 ```
 
 ---
@@ -286,7 +269,6 @@ layout: default
 <div>
 
 ## Security-Focused Review
-
 ```yaml
 - uses: anthropics/claude-code-action@v1
   with:
@@ -298,7 +280,7 @@ layout: default
       - XSS attack vectors
       - Authentication bypasses
       - Data exposure risks
-
+      
       Rate security level 1-10 and provide fixes.
 ```
 
@@ -306,7 +288,6 @@ layout: default
 <div>
 
 ## Documentation Generator
-
 ```yaml
 - uses: anthropics/claude-code-action@v1
   with:
@@ -324,11 +305,10 @@ layout: default
 </div>
 
 ## Scheduled Maintenance
-
 ```yaml
 on:
   schedule:
-    - cron: '0 6 * * 1' # Every Monday at 6 AM
+    - cron: "0 6 * * 1"  # Every Monday at 6 AM
 jobs:
   weekly-maintenance:
     runs-on: ubuntu-latest
@@ -356,7 +336,7 @@ layout: default
 After completing the workshop, you should have:
 
 - [ ] **Claude GitHub App** installed and configured
-- [ ] **Basic workflow** responding to @claude mentions
+- [ ] **Basic workflow** responding to @claude mentions  
 - [ ] **CLAUDE.md** configuration customizing behavior
 - [ ] **Test issue** automatically analyzed and fixed
 - [ ] **Test PR** automatically reviewed with feedback
@@ -368,7 +348,6 @@ After completing the workshop, you should have:
 <div>
 
 ### Immediate Benefits
-
 - **Instant code reviews** on every PR
 - **Automatic issue analysis** and solutions
 - **Zero custom code** to maintain
@@ -377,8 +356,7 @@ After completing the workshop, you should have:
 </div>
 <div>
 
-### Advanced Capabilities
-
+### Advanced Capabilities  
 - **Proactive maintenance** via scheduled runs
 - **Security scanning** on every change
 - **Documentation generation** automatically
@@ -399,7 +377,7 @@ layout: fact
 ✅ **Event-Driven**: Responds to GitHub events automatically  
 ✅ **Customizable**: Behavior configured via CLAUDE.md  
 ✅ **Scalable**: Works for any repository size  
-✅ **Secure**: Uses GitHub's built-in permissions
+✅ **Secure**: Uses GitHub's built-in permissions  
 
 </div>
 

@@ -3,7 +3,6 @@ layout: section
 ---
 
 # 📚 Core Concepts
-
 ## Understanding the fundamentals
 
 ---
@@ -58,26 +57,27 @@ layoutClass: gap-16
 
 ```javascript {1-3|5-7|9-10}
 // Simple text
-'Hello world';
+"Hello world"
 // → ["Hello", " world"]
 
 // Code gets complex
-'const x = 42;';
+"const x = 42;"
 // → ["const", " x", " =", " 42", ";"]
 
 // Special characters matter
-'user@email.com';
+"user@email.com"
 // → ["user", "@", "email", ".", "com"]
 ```
 
 ::right::
 
-**Why this matters**
 
+**Why this matters**
 - Token limits = not character limits
 - Special chars can explode token count
 - Different languages tokenize differently
 - Affects prompt engineering strategies
+
 
 ---
 layout: two-cols
@@ -88,13 +88,11 @@ layout: two-cols
 <div class="text-lg font-semibold mb-4">Each token becomes a <span class="text-blue-500">vector</span> in high-dimensional space</div>
 
 ## Semantic Similarity
-
 - "Developer" ≈ "Programmer"
 - "Vue" ≈ "React" (both are frameworks)
 - "function" ≈ "method"
 
 ## Contextual Distance
-
 - "Cat" ≠ "for-loop"
 - "Database" ≠ "Banana"
 
@@ -105,6 +103,8 @@ layout: two-cols
 <p class="text-base"><strong>Geometry of meaning</strong>, not logic</p>
 <p class="text-sm mt-2 opacity-75">Words with similar meanings are close in vector space</p>
 </div>
+
+
 
 ---
 layout: center
@@ -121,9 +121,8 @@ layout: center
   <line x1="100" y1="40" x2="100" y2="180" stroke="#888" stroke-width="2"/>
 
   <!-- Dimension labels -->
-
-<text x="400" y="200" font-size="4" fill="#666">Dimension 1</text>
-<text x="60" y="40" font-size="4" fill="#666">Dimension 2</text>
+  <text x="400" y="200" font-size="4" fill="#666">Dimension 1</text>
+  <text x="60" y="40" font-size="4" fill="#666">Dimension 2</text>
 
   <!-- Word as a point -->
   <circle cx="250" cy="100" r="6" fill="#6366f1" />
@@ -296,7 +295,6 @@ layout: default
 # 🔍 How Self-Attention Works
 
 ## How it works
-
 - Each token asks: "How relevant are other tokens to me?"
 - Creates connections of varying strengths
 - Captures relationships regardless of distance
@@ -336,10 +334,9 @@ layout: default
   <line x1="325" y1="70" x2="445" y2="70" stroke="#3b82f6" stroke-width="0.8" stroke-opacity="0.3" marker-end="url(#bluearrow)"/>
 
   <!-- Attention percentages -->
-
-<text x="150" y="85" font-size="3" fill="#3b82f6">30% attention</text>
-<text x="265" y="85" font-size="3" fill="#3b82f6">60% attention</text>
-<text x="380" y="85" font-size="3" fill="#3b82f6">10% attention</text>
+  <text x="150" y="85" font-size="3" fill="#3b82f6">30% attention</text>
+  <text x="265" y="85" font-size="3" fill="#3b82f6">60% attention</text>
+  <text x="380" y="85" font-size="3" fill="#3b82f6">10% attention</text>
 
   <!-- Interpretation -->
   <rect x="50" y="120" width="430" height="60" rx="8" fill="rgba(59, 130, 246, 0.05)" stroke="#3b82f6" stroke-dasharray="2,2"/>
@@ -563,6 +560,7 @@ layout: default
 </div>
 </div>
 
+
 ---
 layout: default
 ---
@@ -619,15 +617,19 @@ layout: two-cols
 
 ```javascript {1-3|5-8|10-13}
 // Temperature = 0.0 (deterministic)
-const response = 'Hello';
+const response = "Hello"
 // Always picks highest probability
 
 // Temperature = 0.7 (balanced)
-const response = oneOf(['Hello', 'Hi', 'Greetings']);
+const response = oneOf([
+  "Hello", "Hi", "Greetings"
+])
 // Some variety, still coherent
 
 // Temperature = 1.5 (creative)
-const response = oneOf(['Salutations', 'Yo!', 'Howdy']);
+const response = oneOf([
+  "Salutations", "Yo!", "Howdy"
+])
 // More random, less predictable
 ```
 
@@ -636,7 +638,6 @@ const response = oneOf(['Salutations', 'Yo!', 'Howdy']);
 <div class="flex flex-col justify-center h-full">
 
 **Temperature Controls:**
-
 - **Low (0-0.3):** Focused, deterministic
 - **Medium (0.5-0.8):** Balanced creativity
 - **High (1.0+):** Random, creative
@@ -678,7 +679,6 @@ layout: fact
 ---
 
 # 175B+
-
 Parameters in GPT-4
 
 <div class="text-base mt-4 opacity-75">
@@ -689,6 +689,7 @@ Each parameter is a learned weight in the neural network
 layout: image-right
 image: pages/llm-introduction/transformer-explainer.png
 ---
+
 
 # Interactive Transformer Explainer
 

@@ -3,7 +3,6 @@ layout: section
 ---
 
 # 🛠️ Practical Application
-
 ## Understanding failure modes and solutions
 
 ---
@@ -62,7 +61,6 @@ layout: two-cols
 **Models are snapshots of the world at training time**
 
 They can't "know" new facts unless:
-
 - Retrained on new data
 - Connected to external tools
 - Given context explicitly
@@ -84,16 +82,16 @@ Ask about Vue 3.5 features<br/>
 
 ```typescript {1-3|5-7|9-11}
 // 1. Retrieval-Augmented Generation
-const context = await fetchDocs('Vue 3.5');
-const response = llm.generate(context + prompt);
+const context = await fetchDocs('Vue 3.5')
+const response = llm.generate(context + prompt)
 
 // 2. Tool/API lookups
-const version = await getLatestVersion('vue');
-const features = await getFeatures(version);
+const version = await getLatestVersion('vue')
+const features = await getFeatures(version)
 
 // 3. Date-aware prompting
 prompt = `As of ${new Date()},
-          using Vue ${version}...`;
+          using Vue ${version}...`
 ```
 
 </div>
@@ -127,21 +125,20 @@ Give a 500-line file<br/>
 
 ```typescript {1-4|6-9|11-14}
 // 1. Chunk and summarize
-const chunks = splitIntoChunks(longFile, 100);
-const summaries = chunks.map(summarize);
-const response = process(summaries);
+const chunks = splitIntoChunks(longFile, 100)
+const summaries = chunks.map(summarize)
+const response = process(summaries)
 
 // 2. Hierarchical prompting
-const outline = extractOutline(content);
-const details = getRelevantSection(outline);
-const result = processWithContext(details);
+const outline = extractOutline(content)
+const details = getRelevantSection(outline)
+const result = processWithContext(details)
 
 // 3. Clear anchors
 prompt = `
 In section 3 (lines 200-300),
-you'll find the auth logic...`;
+you'll find the auth logic...`
 ```
-
 </div>
 
 </div>
@@ -211,7 +208,6 @@ layout: default
 <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 p-6 rounded-xl mb-6">
 
 **The model pays most attention to:**
-
 1. 🎯 The very beginning (primacy)
 2. 🎯 The very end (recency)
 3. 😴 Less to the middle
@@ -230,7 +226,6 @@ layout: default
 // More setup...
 // Final instruction
 ```
-
 </div>
 
 <div>
@@ -242,7 +237,6 @@ layout: default
 // Details...
 // REMEMBER: Main requirement
 ```
-
 </div>
 
 </div>
@@ -258,7 +252,6 @@ layout: two-cols
 **Later prompts can override earlier context**
 
 Common scenarios:
-
 - System prompt gets ignored
 - Role instructions forgotten
 - Style guides overridden
@@ -284,18 +277,18 @@ User: "Write React code"<br/>
 const prompt = `
 Remember: Use Vue 3 Composition API
 ${userRequest}
-Use Vue 3 Composition API only`;
+Use Vue 3 Composition API only`
 
 // 2. Structured prompts
 const sections = {
-  role: 'Vue 3 developer',
-  constraints: ['No React', 'TypeScript'],
-  task: userRequest,
-};
+  role: "Vue 3 developer",
+  constraints: ["No React", "TypeScript"],
+  task: userRequest
+}
 
 // 3. Validation checks
 if (response.includes('React')) {
-  regenerate(with_stronger_constraints);
+  regenerate(with_stronger_constraints)
 }
 ```
 

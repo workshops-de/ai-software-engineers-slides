@@ -7,7 +7,6 @@ layout: default
 <div class="text-lg">
 
 ## The Problem
-
 - **Repetitive Tasks** consume developer time
 - **Code Reviews** take hours to days
 - **Bug Fixes** follow the same patterns repeatedly
@@ -26,7 +25,6 @@ layoutClass: gap-16
 ::left::
 
 ## 👨‍💻 Traditional
-
 - Developer writes code
 - Manual code review
 - Manual test execution
@@ -36,7 +34,6 @@ layoutClass: gap-16
 ::right::
 
 ## 🤖 Agentic
-
 - AI assists with coding
 - Automated code review
 - Tests are generated
@@ -49,7 +46,6 @@ class: text-center
 ---
 
 # Agentic = Autonomous Agents
-
 ## that solve tasks independently
 
 <div class="text-4xl mt-8">
@@ -70,9 +66,8 @@ layout: default
 <div>
 
 ## Technological Maturity
-
 - **LLMs** understand code contextually
-- **APIs** enable tool integration
+- **APIs** enable tool integration  
 - **Cloud Computing** scales automation
 - **Git Integration** simplifies workflows
 
@@ -80,7 +75,6 @@ layout: default
 <div>
 
 ## Business Value
-
 - **80% fewer** repetitive tasks
 - **50% faster** code reviews
 - **90% fewer** critical bugs
@@ -106,7 +100,7 @@ layout: default
 ## Success Stories
 
 - **GitHub**: 30% of Pull Requests are created by Copilot
-- **Cursor**: 40% less time on boilerplate code
+- **Cursor**: 40% less time on boilerplate code  
 - **Claude**: 60% faster documentation creation
 - **Linear**: Automated issue classification saves 20h/week
 

@@ -14,7 +14,6 @@ layout: default
 # Task: Review GitHub Pull Requests 👀
 
 ## Objective
-
 Configure Claude Code to provide comprehensive, intelligent code reviews that match or exceed senior developer expertise, covering security, performance, maintainability, and best practices.
 
 <div class="mt-8 grid grid-cols-4 gap-4">
@@ -44,7 +43,7 @@ layout: fact
 ✅ **Multi-Dimensional**: Security, quality, performance, testing coverage  
 ✅ **Intelligent Scoring**: Objective 1-10 ratings with specific feedback  
 ✅ **Smart Triggers**: Review depth adapts to change complexity  
-✅ **Quality Gates**: Automatic approval/blocking based on standards
+✅ **Quality Gates**: Automatic approval/blocking based on standards  
 
 </div>
 

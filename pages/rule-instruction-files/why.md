@@ -3,7 +3,6 @@ layout: cover
 ---
 
 # Rule & Instruction Files for Coding Agents
-
 ## Structuring AI guidance for better development
 
 ---
@@ -32,14 +31,12 @@ layoutClass: gap-16
 <div class="text-base space-y-3">
 
 **From ad-hoc to structured:**
-
 - Initial prompt-based interactions
 - Emergence of reusable prompt templates
 - Development of formal instruction formats
 - Standardization of rule files across tools
 
 **Key benefits:**
-
 - Reduced prompt repetition
 - Consistent AI behavior
 - Project-specific customization
@@ -58,7 +55,6 @@ layout: fact
 ---
 
 # 60%
-
 of AI-coding issues stem from unclear or inconsistent instructions
 
 <div class="text-base mt-4 opacity-75">
@@ -96,9 +92,7 @@ layout: statement
 ---
 
 # Rule files are the
-
 ## coding standards
-
 ### of the AI era
 
 ---

@@ -84,11 +84,9 @@ layout: default
 # 🎭 Role-Based Prompting
 
 ## Concept
-
 Give the AI a professional identity to change its behavior and expertise level.
 
 ## Key Benefits
-
 - **Precise vocabulary** - Uses domain-specific terms
 - **Reduces creativity** - Stays focused on technical accuracy
 - **Consistent tone** - Maintains professional standards
@@ -98,7 +96,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 You are an experienced frontend architect
 specializing in Vue 3 and TypeScript.
@@ -121,11 +118,9 @@ layout: default
 # 🧩 Instruction Prompting
 
 ## Concept
-
 Provide clear, complete instructions with specific conditions and goals.
 
 ## Key Benefits
-
 - **Reduces hallucinations** - Clear constraints prevent made-up information
 - **Deterministic results** - Same input produces similar output
 - **Complete solutions** - Covers all requirements upfront
@@ -135,7 +130,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 Create a Vue component using Composition API:
 - Use <script setup lang="ts">
@@ -157,11 +151,9 @@ layout: default
 # 🧠 Chain-of-Thought (CoT)
 
 ## Concept
-
 Make the AI's reasoning process explicit by asking it to "think out loud."
 
 ## Key Benefits
-
 - **Logical coherence** - Shows step-by-step reasoning
 - **Better debugging** - You can see where logic breaks down
 - **Complex problem solving** - Handles multi-step tasks better
@@ -171,7 +163,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 Explain step by step how you would validate
 props in a Vue component.
@@ -195,15 +186,12 @@ then the test.
 ---
 layout: default
 ---
-
 # 🧪 Few-Shot Learning
 
 ## Concept
-
 Provide examples in the prompt to teach the AI the desired pattern or style.
 
 ## Key Benefits
-
 - **Pattern recognition** - AI learns from concrete examples
 - **Style consistency** - Matches your coding standards
 - **Context understanding** - Shows what "good" looks like
@@ -213,23 +201,17 @@ layout: default
 ---
 
 ## Example
-
 ```vue
 <!-- Example 1 -->
-<template>
-  <button @click="count++">{{ count }}</button>
-</template>
-<script setup lang="ts">
-const count = ref(0);
-</script>
+<template><button @click="count++">{{ count }}</button></template>
+<script setup lang="ts">const count = ref(0)</script>
 
 <!-- Example 2 -->
 <template><input v-model="name" /></template>
-<script setup lang="ts">
-const name = ref('');
-</script>
+<script setup lang="ts">const name = ref('')</script>
 
-Now create a component that renders a list and counts clicked items.
+Now create a component that renders a list
+and counts clicked items.
 ```
 
 <div class="mt-4 p-4 bg-yellow-50 rounded-lg">
@@ -245,11 +227,9 @@ layout: default
 # 🔁 Iterative Prompting
 
 ## Concept
-
 Don't do everything in one prompt—improve results through multiple refinement steps.
 
 ## Key Benefits
-
 - **Higher quality** - Each iteration improves the output
 - **Fewer hallucinations** - Can catch and fix errors
 - **Collaborative feel** - Like pair programming with AI
@@ -259,7 +239,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 1. "Write a Vue component for a login form"
    → AI generates basic component
@@ -284,11 +263,9 @@ layout: default
 # 🧱 Chunking & Context Management
 
 ## Concept
-
 Break large inputs into smaller, logical parts to prevent context loss.
 
 ## Key Benefits
-
 - **Focused attention** - AI processes one thing at a time
 - **Prevents context loss** - Avoids "Lost in the Middle" problem
 - **Better results** - Each chunk gets full attention
@@ -298,7 +275,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 First analyze the imports and list dependencies.
 Next, review the component definition for best practices.
@@ -318,11 +294,9 @@ layout: default
 # 📑 Schema & Format Prompting
 
 ## Concept
-
 Force structured output using specific formats (JSON, Markdown, tables).
 
 ## Key Benefits
-
 - **Automated processing** - Easy to parse and use programmatically
 - **Consistent structure** - Same format every time
 - **Tool integration** - Works well with MCP and other tools
@@ -332,7 +306,6 @@ layout: default
 ---
 
 ## Example
-
 ```json
 {
   "component": "<script setup>...</script>",
@@ -354,11 +327,9 @@ layout: default
 # 🧮 Self-Consistency / Multi-Pass
 
 ## Concept
-
 Generate multiple solutions and compare them to find the best approach.
 
 ## Key Benefits
-
 - **Quality improvement** - Best solution emerges from comparison
 - **Reduced review effort** - AI does the evaluation
 - **Better reasoning** - Shows different approaches
@@ -368,7 +339,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 Create 3 versions of the component using
 different design patterns.
@@ -390,11 +360,9 @@ layout: default
 # 🧰 Tool-Augmented Prompting
 
 ## Concept
-
 Use real tools and APIs instead of relying on AI's knowledge alone.
 
 ## Key Benefits
-
 - **Avoids hallucinations** - Uses real data and results
 - **Accurate validation** - Real tool outputs, not guesses
 - **Integration ready** - Works with existing toolchains
@@ -404,7 +372,6 @@ layout: default
 ---
 
 ## Example
-
 ```text
 Check the following code with ESLint.
 Then run Vitest and summarize the results.
