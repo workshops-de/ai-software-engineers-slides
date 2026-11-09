@@ -7,17 +7,16 @@
   },
   "private": true,
   "scripts": {
-    "build": "slidev build",
-    "dev": "slidev --open",
+    "build": "workshop-slides build",
+    "dev": "workshop-slides dev",
     "export": "slidev export"
   },
+  "prettier": "@workshops.de/slidev-toolkit/prettier",
   "dependencies": {
-    "@slidev/cli": "^53.1.0",
     "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest",
-    "vue": "^3.5.45"
+    "@slidev/theme-seriph": "latest"
   },
   "devDependencies": {
-    "playwright-chromium": "^1.65.0"
+    "@workshops.de/slidev-toolkit": "^1.1.0"
   }
 }
