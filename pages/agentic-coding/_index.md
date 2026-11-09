@@ -1,4 +1,3 @@
-
 ---
 src: ./github-workflows-for-agentic-coding/_index.md
 ---
