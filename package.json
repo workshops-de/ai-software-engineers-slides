@@ -1,6 +1,10 @@
 {
   "name": "ki-web-developers-slides",
   "type": "module",
+  "engines": {
+    "node": ">=24",
+    "npm": ">=11"
+  },
   "private": true,
   "scripts": {
     "build": "slidev build",
