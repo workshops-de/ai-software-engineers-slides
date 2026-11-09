@@ -13,8 +13,7 @@
   },
   "prettier": "@workshops.de/slidev-toolkit/prettier",
   "dependencies": {
-    "@slidev/theme-default": "latest",
-    "@slidev/theme-seriph": "latest"
+    "@workshops.de/slidev-theme": "2.1.0"
   },
   "devDependencies": {
     "@workshops.de/slidev-toolkit": "^1.1.0"

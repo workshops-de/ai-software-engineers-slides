@@ -1,6 +1,5 @@
 ---
-# try also 'default' to start simple
-theme: default
+theme: '@workshops.de/slidev-theme'
 # some information about your slides (markdown enabled)
 title: AI for Software Engineers
 # apply UnoCSS classes to the current slide
