@@ -43,7 +43,6 @@ They are the **backbone** of agentic development systems.
 </div>
 </div>
 
-
 ---
 layout: fact
 ---

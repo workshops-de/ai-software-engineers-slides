@@ -78,7 +78,6 @@ layoutClass: gap-16
 - Different languages tokenize differently
 - Affects prompt engineering strategies
 
-
 ---
 layout: two-cols
 ---
@@ -103,8 +102,6 @@ layout: two-cols
 <p class="text-base"><strong>Geometry of meaning</strong>, not logic</p>
 <p class="text-sm mt-2 opacity-75">Words with similar meanings are close in vector space</p>
 </div>
-
-
 
 ---
 layout: center
@@ -560,7 +557,6 @@ layout: default
 </div>
 </div>
 
-
 ---
 layout: default
 ---
@@ -689,7 +685,6 @@ Each parameter is a learned weight in the neural network
 layout: image-right
 image: pages/llm-introduction/transformer-explainer.png
 ---
-
 
 # Interactive Transformer Explainer
 

@@ -238,7 +238,6 @@ class AgentIDE {
 </div>
 
 ---
----
 
 # Extreme Scenarios 🌟
 

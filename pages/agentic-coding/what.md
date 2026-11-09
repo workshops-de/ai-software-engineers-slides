@@ -64,7 +64,6 @@ Human: Reviews final result
 - Learns from patterns
 - End-to-end automation
 
-
 ---
 layout: default
 ---
@@ -130,7 +129,6 @@ cron.schedule('0 2 * * *', async () => {
   await securityAgent.scanAllRepos();
 });
 ```
-
 
 ---
 layout: fact

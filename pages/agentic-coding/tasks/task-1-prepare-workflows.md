@@ -31,7 +31,6 @@ Set up the foundational Claude Code GitHub Actions workflow that will serve as t
 </div>
 </div>
 
-
 ---
 layout: fact
 ---

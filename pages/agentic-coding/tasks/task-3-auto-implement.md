@@ -31,7 +31,6 @@ Configure Claude Code to automatically implement complete solutions for GitHub i
 </div>
 </div>
 
-
 ---
 layout: fact
 ---
