@@ -14,7 +14,7 @@ layout: default
 
 <div class="text-lg mb-8">
 
-**Agentic Coding** is a paradigm where autonomous **software agents** 
+**Agentic Coding** is a paradigm where autonomous **software agents**
 independently execute, analyze, and optimize code-related tasks.
 
 </div>
@@ -22,7 +22,7 @@ independently execute, analyze, and optimize code-related tasks.
 ## Core Characteristics
 
 - **🧠 Autonomous**: Agents make independent decisions
-- **🔄 Reactive**: Respond to events and changes  
+- **🔄 Reactive**: Respond to events and changes
 - **🎯 Goal-oriented**: Work towards defined objectives
 - **🔗 Collaborative**: Communicate with other agents
 - **📊 Context-aware**: Fully understand code context
@@ -37,8 +37,9 @@ layoutClass: gap-16
 ::left::
 
 ## 🛠️ Traditional Tool
+
 ```yaml
-Input: "Fix this bug"
+Input: 'Fix this bug'
 Process: Manual steps required
 Output: Partial solution
 Human: Reviews and completes
@@ -52,8 +53,9 @@ Human: Reviews and completes
 ::right::
 
 ## 🤖 Agentic System
+
 ```yaml
-Input: "Repository has issues"
+Input: 'Repository has issues'
 Process: Agent analyzes automatically
 Output: Complete solution + PR
 Human: Reviews final result
@@ -63,7 +65,6 @@ Human: Reviews final result
 - Multi-step problem solving
 - Learns from patterns
 - End-to-end automation
-
 
 ---
 layout: default
@@ -75,15 +76,17 @@ layout: default
 <div>
 
 ## Code Agents
+
 - **Code Generator**: Writes new code
-- **Refactor Agent**: Optimizes existing code  
+- **Refactor Agent**: Optimizes existing code
 - **Test Agent**: Generates and runs tests
 - **Security Agent**: Scans for vulnerabilities
 
 </div>
 <div>
 
-## Process Agents  
+## Process Agents
+
 - **PR Agent**: Creates and reviews Pull Requests
 - **Issue Agent**: Classifies and resolves issues
 - **Deploy Agent**: Automates deployments
@@ -102,6 +105,7 @@ layoutClass: gap-16
 ::left::
 
 ## ⚡ Reactive Agents
+
 - React to **Events**
 - GitHub Webhooks
 - CI/CD Pipeline Failures
@@ -118,8 +122,9 @@ webhook.on('pull_request', async (event) => {
 ::right::
 
 ## 🔮 Proactive Agents
+
 - **Scheduled** Analysis
-- Code Quality Monitoring  
+- Code Quality Monitoring
 - Dependency Updates
 - Performance Optimization
 - Security Scanning
@@ -131,7 +136,6 @@ cron.schedule('0 2 * * *', async () => {
 });
 ```
 
-
 ---
 layout: fact
 ---
@@ -142,12 +146,12 @@ layout: fact
 
   <div class="text-1xl text-left max-w-xl">
 
-  **Level 0**: Manual - Everything manual  
-  **Level 1**: Assisted - Tool supports  
-  **Level 2**: Partial - Agent executes sub-tasks  
-  **Level 3**: Conditional - Agent decides in known cases  
-  **Level 4**: High - Agent acts autonomously with human oversight  
-  **Level 5**: Full - Fully autonomous agents  
+**Level 0**: Manual - Everything manual  
+**Level 1**: Assisted - Tool supports  
+**Level 2**: Partial - Agent executes sub-tasks  
+**Level 3**: Conditional - Agent decides in known cases  
+**Level 4**: High - Agent acts autonomously with human oversight  
+**Level 5**: Full - Fully autonomous agents
 
   </div>
 

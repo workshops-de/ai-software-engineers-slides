@@ -124,12 +124,12 @@ layout: default
 ### **Import Required Modules**
 
 ```typescript
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { exec as execSync } from "child_process";
-import { dirname } from "path";
-import { promisify } from "util";
-import { z } from "zod";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js';
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { exec as execSync } from 'child_process';
+import { dirname } from 'path';
+import { promisify } from 'util';
+import { z } from 'zod';
 
 const exec = promisify(execSync);
 ```
@@ -138,8 +138,8 @@ const exec = promisify(execSync);
 
 ```typescript
 const server = new McpServer({
-  name: "workshops-de-angular-mcp",
-  version: "1.0.0",
+  name: 'workshops-de-angular-mcp',
+  version: '1.0.0',
 });
 ```
 
@@ -165,18 +165,18 @@ layout: default
 
 ```typescript
 server.registerTool(
-  "generate_component",
+  'generate_component',
   {
-    title: "Generate Angular Component",
-    description: "Creates a new Angular component using the Angular CLI",
+    title: 'Generate Angular Component',
+    description: 'Creates a new Angular component using the Angular CLI',
     inputSchema: {
-      name: z.string().describe("Component name"),
-      path: z.string().optional().describe("Target path or project"),
+      name: z.string().describe('Component name'),
+      path: z.string().optional().describe('Target path or project'),
     },
   },
   async ({ name, path }: { name: string; path?: string }) => {
     // Tool implementation
-  },
+  }
 );
 ```
 
@@ -203,7 +203,7 @@ layout: default
 ```typescript
 async ({ name, path }: { name: string; path?: string }) => {
   // Remove src/app prefix if present
-  path = path?.replace(/^src\/app\/?/, "");
+  path = path?.replace(/^src\/app\/?/, '');
 
   // Construct CLI command
   const target = path ? `${path}/${name}` : name;
@@ -217,7 +217,7 @@ async ({ name, path }: { name: string; path?: string }) => {
   return {
     content: [
       {
-        type: "text",
+        type: 'text',
         text: `✅ Component generated successfully:\n${result.stdout}`,
       },
     ],
@@ -253,7 +253,7 @@ try {
   return {
     content: [
       {
-        type: "text",
+        type: 'text',
         text: `✅ Component generated successfully:\n${result.stdout}`,
       },
     ],
@@ -262,8 +262,8 @@ try {
   return {
     content: [
       {
-        type: "text",
-        text: `❌ CLI Error: ${error instanceof Error ? error.message : "Unknown error"}`,
+        type: 'text',
+        text: `❌ CLI Error: ${error instanceof Error ? error.message : 'Unknown error'}`,
       },
     ],
   };
@@ -296,10 +296,10 @@ const transport = new StdioServerTransport();
 server
   .connect(transport)
   .then(() => {
-    console.log("MCP server started");
+    console.log('MCP server started');
   })
   .catch((error) => {
-    console.error("Error connecting to MCP server:", error);
+    console.error('Error connecting to MCP server:', error);
   });
 ```
 

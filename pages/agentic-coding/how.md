@@ -16,6 +16,7 @@ layout: default
 <div>
 
 ## 🤖 AI Layer
+
 - **Claude Code**: Advanced reasoning
 - **GitHub Actions**: Event triggers
 - **@claude mentions**: Simple activation
@@ -25,6 +26,7 @@ layout: default
 <div>
 
 ## 🔧 Integration Layer
+
 - **GitHub API**: Repository access
 - **Webhooks**: Real-time events
 - **PR/Issue comments**: Communication
@@ -34,6 +36,7 @@ layout: default
 <div>
 
 ## 🏗️ Platform Layer
+
 - **GitHub**: Repository & Actions
 - **Claude Code Action**: Pre-built automation
 - **Anthropic API**: AI processing
@@ -73,6 +76,7 @@ jobs:
 ::right::
 
 ## What Claude Does
+
 - **Analyzes** the issue context
 - **Reads** relevant code files
 - **Identifies** the root cause
@@ -80,7 +84,7 @@ jobs:
 - **Tests** the solution
 - **Documents** the changes
 
-*All triggered by a simple @claude mention!*
+_All triggered by a simple @claude mention!_
 
 ---
 layout: two-cols-header
@@ -95,7 +99,7 @@ layoutClass: gap-16
 name: Daily Code Review
 on:
   schedule:
-    - cron: "0 9 * * *"
+    - cron: '0 9 * * *'
 jobs:
   daily-review:
     runs-on: ubuntu-latest
@@ -107,12 +111,13 @@ jobs:
             Review yesterday's commits and create a summary report.
             Identify any potential issues or improvements.
             Create an issue with your findings if needed.
-          claude_args: "--max-turns 3"
+          claude_args: '--max-turns 3'
 ```
 
 ::right::
 
 ## Proactive Agent Benefits
+
 - **Daily code health checks**
 - **Automated security scanning**
 - **Documentation updates**
@@ -140,7 +145,7 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: "Analyze feature request and create implementation plan"
+          prompt: 'Analyze feature request and create implementation plan'
 
   implement-feature:
     needs: analyze-requirement
@@ -149,29 +154,34 @@ jobs:
       - uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          prompt: "Implement feature with tests and documentation"
+          prompt: 'Implement feature with tests and documentation'
 ```
 
 ::right::
 
 **Step 4: Configure Claude's Behavior**
+
 ```markdown
 <!-- CLAUDE.md -->
+
 # Claude Configuration
 
 ## Coding Standards
+
 - Use TypeScript for all new code
 - Follow ESLint configuration
 - Write tests for new functions
 - Update documentation
 
 ## Review Criteria
+
 - Security: Check for vulnerabilities
 - Performance: Identify bottlenecks
 - Maintainability: Ensure clean code
 - Testing: Verify test coverage
 
 ## Auto-fix Guidelines
+
 - Fix lint errors automatically
 - Update dependencies safely
 - Regenerate documentation
@@ -207,7 +217,7 @@ layout: default
       - Maintain existing API contracts
 
       OUTPUT: Detailed review comments with specific suggestions
-    claude_args: "--max-turns 5 --model claude-3-5-sonnet-20241022"
+    claude_args: '--max-turns 5 --model claude-3-5-sonnet-20241022'
 ```
 
 ---
@@ -220,6 +230,7 @@ layoutClass: gap-8
 ::left::
 
 **Issue-Based Automation**
+
 ```yaml
 on:
   issues:
@@ -227,6 +238,7 @@ on:
 ```
 
 **PR-Based Reviews**
+
 ```yaml {*}{maxHeight:'120px'}
 on:
   pull_request:
@@ -249,7 +261,6 @@ on:
 **Use for**: Maintenance, optimization, documentation updates
 **Agent action**: Perform specific tasks based on user selection
 
-
 ---
 layout: default
 ---
@@ -267,7 +278,7 @@ jobs:
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          claude_args: "--max-turns 3"
+          claude_args: '--max-turns 3'
 
       - name: Fallback to Manual Review
         if: failure()

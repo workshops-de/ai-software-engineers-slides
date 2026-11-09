@@ -14,6 +14,7 @@ layout: default
 # Task: Analyse GitHub Issues 🔍
 
 ## Objective
+
 Enhance your Claude Code workflow to automatically analyze, classify, and plan implementation for GitHub issues with sophisticated AI-powered insights.
 
 <div class="mt-8 grid grid-cols-4 gap-4">
@@ -43,7 +44,7 @@ layout: fact
 ✅ **Complexity Assessment**: Rates difficulty and effort accurately  
 ✅ **Implementation Planning**: Creates detailed development roadmaps  
 ✅ **Risk Analysis**: Identifies potential challenges proactively  
-✅ **Team Coordination**: Suggests assignments and reviewers  
+✅ **Team Coordination**: Suggests assignments and reviewers
 
 </div>
 

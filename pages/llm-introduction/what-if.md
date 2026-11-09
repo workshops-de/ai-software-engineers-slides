@@ -33,13 +33,14 @@ layout: default
 ---
 
 # ✨ Summary
+
 ## 📚 What We Learned
 
-| Concept       | Description            |
-|---------------|-----------------------|
-| Tokenization  | Words → Numbers       |
-| Embeddings    | Meaning → Geometry    |
-| Attention     | Tokens talking        |
-| Prediction    | Statistical guessing  |
-| Phenomena     | Structural limits     |
-| Prompting     | Human interface       |
+| Concept      | Description          |
+| ------------ | -------------------- |
+| Tokenization | Words → Numbers      |
+| Embeddings   | Meaning → Geometry   |
+| Attention    | Tokens talking       |
+| Prediction   | Statistical guessing |
+| Phenomena    | Structural limits    |
+| Prompting    | Human interface      |

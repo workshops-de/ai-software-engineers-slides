@@ -3,6 +3,7 @@ layout: cover
 ---
 
 # 🧠 How a Large Language Model Works
+
 ## A practical introduction for software developers
 
 ---
@@ -31,6 +32,7 @@ layout: default
 We interact with them daily — but **they don't "think" like humans**
 
 Knowing their mechanics helps you:
+
 - Write better prompts that get results
 - Debug weird or unexpected outputs
 - Design realistic expectations for AI tools
@@ -49,6 +51,7 @@ layoutClass: gap-16
 <div class="text-base space-y-3">
 
 **What's changed:**
+
 - Code generation at scale
 - Natural language to code
 - Intelligent debugging assistance
@@ -56,6 +59,7 @@ layoutClass: gap-16
 - Test generation
 
 **What hasn't:**
+
 - Need for human judgment
 - Understanding business logic
 - Creative problem solving
@@ -74,6 +78,7 @@ layout: fact
 ---
 
 # 70%
+
 of developers use AI tools daily
 
 <div class="text-base mt-4 opacity-75">
@@ -111,35 +116,36 @@ layout: two-cols
 # 🔍 Real Developer Scenarios
 
 **Scenario 1: The Hallucinated API**
+
 ```typescript
 // AI suggests:
-import { useAutoSave } from 'vue'
+import { useAutoSave } from 'vue';
 // This doesn't exist! 🚫
 ```
 
 **Scenario 2: The Outdated Pattern**
+
 ```vue
-// AI generates Vue 2 syntax
-export default {
-  data() { return { count: 0 } }
-}
-// When you need Vue 3 Composition API
+// AI generates Vue 2 syntax export default { data() { return { count: 0 } } } // When you need Vue
+3 Composition API
 ```
 
 ::right::
 
 **Scenario 3: The Confident Bug**
+
 ```javascript
 // AI's "optimized" solution
-const sorted = arr.sort()
+const sorted = arr.sort();
 // Mutates original array! 🐛
 ```
 
 **Scenario 4: The Context Loss**
+
 ```typescript
 // After 100 lines of context...
 // AI forgets your TypeScript strictness
-let user = getUserData()
+let user = getUserData();
 // Missing type annotations
 ```
 
@@ -197,7 +203,9 @@ layout: statement
 ---
 
 # Understanding how LLMs work
+
 ## makes you a better developer
+
 ### in the AI age
 
 ---

@@ -41,19 +41,19 @@ layout: default
 
 ```typescript
 server.registerTool(
-  "run_migration",
+  'run_migration',
   {
-    title: "Run Angular Migration",
-    description: "Execute Angular update migrations",
+    title: 'Run Angular Migration',
+    description: 'Execute Angular update migrations',
     inputSchema: {
-      version: z.string().describe("Target Angular version"),
+      version: z.string().describe('Target Angular version'),
       packages: z.array(z.string()).optional(),
     },
   },
   async ({ version, packages }) => {
     const command = `npx @angular/cli update @angular/core@${version}`;
     // Implementation
-  },
+  }
 );
 ```
 
@@ -61,18 +61,18 @@ server.registerTool(
 
 ```typescript
 server.registerTool(
-  "run_tests",
+  'run_tests',
   {
-    title: "Run Angular Tests",
-    description: "Execute unit and e2e tests",
+    title: 'Run Angular Tests',
+    description: 'Execute unit and e2e tests',
     inputSchema: {
-      type: z.enum(["unit", "e2e", "all"]),
+      type: z.enum(['unit', 'e2e', 'all']),
       watch: z.boolean().optional(),
     },
   },
   async ({ type, watch }) => {
     // Implementation
-  },
+  }
 );
 ```
 
@@ -92,24 +92,24 @@ layout: default
 
 ```typescript
 server.registerResource(
-  "project_structure",
+  'project_structure',
   {
-    name: "Angular Project Structure",
-    description: "Current project file organization",
-    mimeType: "application/json",
+    name: 'Angular Project Structure',
+    description: 'Current project file organization',
+    mimeType: 'application/json',
   },
   async () => {
     const structure = await getProjectStructure();
     return {
       contents: [
         {
-          uri: "project://structure",
-          mimeType: "application/json",
+          uri: 'project://structure',
+          mimeType: 'application/json',
           text: JSON.stringify(structure, null, 2),
         },
       ],
     };
-  },
+  }
 );
 ```
 
@@ -117,24 +117,24 @@ server.registerResource(
 
 ```typescript
 server.registerResource(
-  "package_info",
+  'package_info',
   {
-    name: "Package Dependencies",
-    description: "Current package.json information",
-    mimeType: "application/json",
+    name: 'Package Dependencies',
+    description: 'Current package.json information',
+    mimeType: 'application/json',
   },
   async () => {
     const packageJson = await readPackageJson();
     return {
       contents: [
         {
-          uri: "project://package.json",
-          mimeType: "application/json",
+          uri: 'project://package.json',
+          mimeType: 'application/json',
           text: JSON.stringify(packageJson, null, 2),
         },
       ],
     };
-  },
+  }
 );
 ```
 
@@ -154,19 +154,19 @@ layout: default
 
 ```typescript
 server.registerPrompt(
-  "generate_component_with_tests",
+  'generate_component_with_tests',
   {
-    name: "Generate Component with Tests",
-    description: "Create a component with comprehensive test setup",
+    name: 'Generate Component with Tests',
+    description: 'Create a component with comprehensive test setup',
     arguments: [
       {
-        name: "componentName",
-        description: "Name of the component to generate",
+        name: 'componentName',
+        description: 'Name of the component to generate',
         required: true,
       },
       {
-        name: "features",
-        description: "Features to include (forms, routing, etc.)",
+        name: 'features',
+        description: 'Features to include (forms, routing, etc.)',
         required: false,
       },
     ],
@@ -175,20 +175,20 @@ server.registerPrompt(
     return {
       messages: [
         {
-          role: "user",
+          role: 'user',
           content: {
-            type: "text",
+            type: 'text',
             text: `Generate a ${args.componentName} component with:
         - Standalone component architecture
         - Input/Output properties
-        - ${args.features ? args.features.join(", ") : "Basic functionality"}
+        - ${args.features ? args.features.join(', ') : 'Basic functionality'}
         - Comprehensive unit tests
         - Accessibility features`,
           },
         },
       ],
     };
-  },
+  }
 );
 ```
 
@@ -208,13 +208,13 @@ layout: default
 
 ```typescript
 server.registerTool(
-  "implement_feature",
+  'implement_feature',
   {
-    title: "Implement Complete Feature",
-    description: "Generate component, service, tests, and documentation",
+    title: 'Implement Complete Feature',
+    description: 'Generate component, service, tests, and documentation',
     inputSchema: {
       featureName: z.string(),
-      componentType: z.enum(["page", "widget", "form"]),
+      componentType: z.enum(['page', 'widget', 'form']),
       includeTests: z.boolean().default(true),
       includeDocs: z.boolean().default(true),
     },
@@ -226,7 +226,7 @@ server.registerTool(
     steps.push(await generateComponent(featureName, componentType));
 
     // 2. Generate service if needed
-    if (componentType === "form") {
+    if (componentType === 'form') {
       steps.push(await generateService(featureName));
     }
 
@@ -243,12 +243,12 @@ server.registerTool(
     return {
       content: [
         {
-          type: "text",
-          text: `✅ Feature implementation complete:\n${steps.join("\n")}`,
+          type: 'text',
+          text: `✅ Feature implementation complete:\n${steps.join('\n')}`,
         },
       ],
     };
-  },
+  }
 );
 ```
 
@@ -270,10 +270,10 @@ layout: default
 
 ```typescript
 server.registerTool(
-  "commit_changes",
+  'commit_changes',
   {
-    title: "Commit Generated Code",
-    description: "Automatically commit generated components",
+    title: 'Commit Generated Code',
+    description: 'Automatically commit generated components',
     inputSchema: {
       message: z.string(),
       files: z.array(z.string()),
@@ -281,7 +281,7 @@ server.registerTool(
   },
   async ({ message, files }) => {
     // Git operations
-  },
+  }
 );
 ```
 
@@ -289,18 +289,18 @@ server.registerTool(
 
 ```typescript
 server.registerTool(
-  "deploy_component",
+  'deploy_component',
   {
-    title: "Deploy to Staging",
-    description: "Deploy generated components to staging",
+    title: 'Deploy to Staging',
+    description: 'Deploy generated components to staging',
     inputSchema: {
-      environment: z.enum(["staging", "production"]),
+      environment: z.enum(['staging', 'production']),
       components: z.array(z.string()),
     },
   },
   async ({ environment, components }) => {
     // Deployment logic
-  },
+  }
 );
 ```
 
@@ -312,10 +312,10 @@ server.registerTool(
 
 ```typescript
 server.registerTool(
-  "analyze_performance",
+  'analyze_performance',
   {
-    title: "Analyze Component Performance",
-    description: "Run performance analysis on components",
+    title: 'Analyze Component Performance',
+    description: 'Run performance analysis on components',
     inputSchema: {
       componentPath: z.string(),
       metrics: z.array(z.string()),
@@ -323,7 +323,7 @@ server.registerTool(
   },
   async ({ componentPath, metrics }) => {
     // Performance analysis
-  },
+  }
 );
 ```
 
@@ -346,22 +346,18 @@ layout: default
 ```typescript
 async function executeWithRetry<T>(
   operation: () => Promise<T>,
-  maxRetries: number = 3,
+  maxRetries: number = 3
 ): Promise<T> {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await operation();
     } catch (error) {
       if (attempt === maxRetries) {
-        throw new Error(
-          `Operation failed after ${maxRetries} attempts: ${error.message}`,
-        );
+        throw new Error(`Operation failed after ${maxRetries} attempts: ${error.message}`);
       }
 
       // Exponential backoff
-      await new Promise((resolve) =>
-        setTimeout(resolve, Math.pow(2, attempt) * 1000),
-      );
+      await new Promise((resolve) => setTimeout(resolve, Math.pow(2, attempt) * 1000));
     }
   }
 }
@@ -400,12 +396,12 @@ layout: default
 ```typescript
 function sanitizeComponentName(name: string): string {
   // Remove dangerous characters
-  return name.replace(/[^a-zA-Z0-9-_]/g, "");
+  return name.replace(/[^a-zA-Z0-9-_]/g, '');
 }
 
 function validatePath(path: string): boolean {
   // Prevent directory traversal
-  return !path.includes("..") && !path.startsWith("/");
+  return !path.includes('..') && !path.startsWith('/');
 }
 ```
 
@@ -466,31 +462,29 @@ class ProjectCache {
 
 ```typescript
 server.registerTool(
-  "batch_generate",
+  'batch_generate',
   {
-    title: "Batch Component Generation",
-    description: "Generate multiple components efficiently",
+    title: 'Batch Component Generation',
+    description: 'Generate multiple components efficiently',
     inputSchema: {
       components: z.array(
         z.object({
           name: z.string(),
           path: z.string().optional(),
-        }),
+        })
       ),
     },
   },
   async ({ components }) => {
     // Process in parallel with concurrency limit
     const results = await pLimit(3)(
-      components.map((comp) => generateComponent(comp.name, comp.path)),
+      components.map((comp) => generateComponent(comp.name, comp.path))
     );
 
     return {
-      content: [
-        { type: "text", text: `Generated ${results.length} components` },
-      ],
+      content: [{ type: 'text', text: `Generated ${results.length} components` }],
     };
-  },
+  }
 );
 ```
 

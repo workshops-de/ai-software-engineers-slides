@@ -6,7 +6,7 @@ layout: default
 
 <div class="text-lg mb-8">
 
-**GitHub Workflows** are the **foundation** of agentic development - they enable 
+**GitHub Workflows** are the **foundation** of agentic development - they enable
 agents to independently react to code changes and execute actions.
 
 </div>
@@ -15,7 +15,7 @@ agents to independently react to code changes and execute actions.
 
 - **Manual code reviews** take hours to days
 - **Testing** is forgotten or delayed
-- **Deployment** is error-prone and inconsistent  
+- **Deployment** is error-prone and inconsistent
 - **Issue management** consumes developer time
 - **Quality gates** are bypassed under time pressure
 
@@ -29,11 +29,12 @@ layoutClass: gap-16
 ::left::
 
 ## 👨‍💻 Manual Process
+
 ```
 Developer creates PR
 ↓
 Manual code review request
-↓  
+↓
 Wait for reviewer availability
 ↓
 Review feedback loop
@@ -53,11 +54,12 @@ Manual issue closure
 ::right::
 
 ## 🤖 Automated Workflow
+
 ```
 Developer creates PR
 ↓ (instant)
 Automated tests run
-↓ (2-5 minutes)  
+↓ (2-5 minutes)
 AI code review
 ↓ (30 seconds)
 Quality checks pass
@@ -68,7 +70,7 @@ Auto-deployment
 ↓ (5-10 minutes)
 Auto-issue management
 
-⏱️ Time: 15-30 minutes  
+⏱️ Time: 15-30 minutes
 🐛 Error Rate: 2-5%
 ```
 
@@ -82,6 +84,7 @@ layout: default
 <div>
 
 ## Event-Driven Architecture
+
 - **Push Events**: Code changes trigger workflows
 - **PR Events**: Reviews and checks automated
 - **Issue Events**: Ticket management automation
@@ -93,7 +96,7 @@ on:
   pull_request:
     types: [opened, synchronize]
   issues:
-    types: [opened, labeled]  
+    types: [opened, labeled]
   schedule:
     - cron: '0 2 * * *'
 ```
@@ -102,8 +105,9 @@ on:
 <div>
 
 ## Agent Integration Points
+
 - **Webhooks**: Real-time event notifications
-- **API Access**: Full GitHub API integration  
+- **API Access**: Full GitHub API integration
 - **Secrets Management**: Secure credential handling
 - **Artifact Storage**: Build outputs and reports
 - **Environment Management**: Staged deployments
@@ -124,38 +128,40 @@ layoutClass: gap-16
 
 ::left::
 
-## Cost Calculation  
+## Cost Calculation
+
 ```typescript
 // Manual Process Costs
 const manualProcess = {
   codeReview: 2, // hours per PR
-  testing: 1.5,  // hours per feature
+  testing: 1.5, // hours per feature
   deployment: 1, // hours per release
-  bugFixes: 4,   // hours per production bug
-  
+  bugFixes: 4, // hours per production bug
+
   // Per month (team of 5)
   totalHours: (2 + 1.5 + 1 + 4) * 20 * 5, // 850h
   hourlyCost: 50, // €50/hour
-  monthlyCost: 42500 // €42,500
+  monthlyCost: 42500, // €42,500
 };
 
 // Automated Process
 const automatedProcess = {
   setupTime: 40, // one-time setup hours
-  maintenanceTime: 8, // hours per month  
+  maintenanceTime: 8, // hours per month
   toolCosts: 200, // GitHub Pro + tools
-  
-  monthlyCost: (8 * 50) + 200, // €600
-  savings: 41900 // €41,900/month
+
+  monthlyCost: 8 * 50 + 200, // €600
+  savings: 41900, // €41,900/month
 };
 ```
 
 ::right::
 
 ## Break-even Analysis
+
 - **Setup Investment**: 40h × €50 = €2,000
 - **Monthly Savings**: €41,900
-- **Break-even**: 1.4 days! 🚀  
+- **Break-even**: 1.4 days! 🚀
 - **Annual ROI**: **25,000%**
 
 <div class="mt-6 p-4 bg-gold-100 rounded-lg">

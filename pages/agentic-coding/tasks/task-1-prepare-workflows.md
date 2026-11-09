@@ -14,6 +14,7 @@ layout: default
 # Task: Prepare GitHub Workflows ⚙️
 
 ## Objective
+
 Set up the foundational Claude Code GitHub Actions workflow that will serve as the basis for all subsequent automation tasks.
 
 <div class="mt-8 grid grid-cols-4 gap-4">
@@ -31,7 +32,6 @@ Set up the foundational Claude Code GitHub Actions workflow that will serve as t
 </div>
 </div>
 
-
 ---
 layout: fact
 ---
@@ -44,7 +44,7 @@ layout: fact
 ✅ **Multi-Event Support**: Issues, PRs, manual triggers configured  
 ✅ **Behavior Defined**: CLAUDE.md guidelines established  
 ✅ **Testing Verified**: @claude mentions working correctly  
-✅ **Scalable Base**: Ready for 4 additional workshop tasks  
+✅ **Scalable Base**: Ready for 4 additional workshop tasks
 
 </div>
 
